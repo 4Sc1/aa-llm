@@ -1,0 +1,57 @@
+Model Summary for RQ 2  ( calmness ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  22147.9   22230.6  -11062.0   22123.9      7237 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.2440 -0.5446  0.0881  0.5605  4.0472 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.7624   0.8732  
+ Residual             1.1424   1.0689  
+Number of obs: 7249, groups:  id, 177
+
+Fixed effects:
+                                                  Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)                                        4.99469    0.09202  190.24562  54.276  < 2e-16 ***
+event_categoryLeisure and Recreation               0.02981    0.03761 7102.45320   0.793  0.42795    
+event_categorySocial and Personal Relationships   -0.10332    0.04053 7106.07780  -2.549  0.01082 *  
+event_categoryWork and Professional Engagements   -0.27881    0.04392 7125.85966  -6.348 2.31e-10 ***
+event_categoryHealth and Well-being               -0.20799    0.06740 7107.31381  -3.086  0.00204 ** 
+event_categoryIndeterminate                        0.01791    0.05599 7185.93343   0.320  0.74901    
+event_sentimentnegative                           -0.86225    0.05208 7138.01405 -16.556  < 2e-16 ***
+event_sentimentpositive                            0.18915    0.03326 7108.11886   5.688 1.34e-08 ***
+event_sentimentnone                               -0.25397    0.12997 7200.25320  -1.954  0.05072 .  
+groupBPD                                          -2.16106    0.13487  179.24400 -16.023  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+              (Intr) ev_LaR e_SaPR e_WaPE e_HaW- evnt_I evnt_sntmntng evnt_sntmntp evnt_sntmntnn
+evnt_ctgLaR   -0.112                                                                            
+evnt_ctSaPR   -0.086  0.373                                                                     
+evnt_ctWaPE   -0.132  0.269  0.234                                                              
+evnt_ctHaW-   -0.047  0.186  0.283  0.152                                                       
+evnt_ctgryI   -0.082  0.209  0.215  0.175  0.177                                                
+evnt_sntmntng -0.031 -0.047 -0.237 -0.027 -0.368  0.012                                         
+evnt_sntmntp  -0.072 -0.222 -0.345  0.049 -0.068  0.040  0.262                                  
+evnt_sntmntnn -0.002 -0.017 -0.021  0.001 -0.017 -0.192  0.052         0.040                    
+groupBPD      -0.655 -0.007 -0.024  0.023 -0.032 -0.039 -0.021         0.005       -0.021       
+
+APA Style Table:
+                                                                                         Effect       b     SE        t         df       p
+(Intercept)                                                                           Intercept  4.9947 0.0920  54.2756   190.2456 < .0001
+event_categoryLeisure and Recreation                       Event categoryLeisure and Recreation  0.0298 0.0376   0.7927 7,102.4532   .4280
+event_categorySocial and Personal Relationships Event categorySocial and Personal Relationships -0.1033 0.0405  -2.5492 7,106.0778   .0108
+event_categoryWork and Professional Engagements Event categoryWork and Professional Engagements -0.2788 0.0439  -6.3482 7,125.8597 < .0001
+event_categoryHealth and Well-being                         Event categoryHealth and Well-being -0.2080 0.0674  -3.0857 7,107.3138   .0020
+event_categoryIndeterminate                                         Event categoryIndeterminate  0.0179 0.0560   0.3200 7,185.9334   .7490
+event_sentimentnegative                                                 Event sentimentnegative -0.8623 0.0521 -16.5558 7,138.0141 < .0001
+event_sentimentpositive                                                 Event sentimentpositive  0.1892 0.0333   5.6877 7,108.1189 < .0001
+event_sentimentnone                                                         Event sentimentnone -0.2540 0.1300  -1.9541 7,200.2532   .0507
+groupBPD                                                                               GroupBPD -2.1611 0.1349 -16.0229   179.2440 < .0001

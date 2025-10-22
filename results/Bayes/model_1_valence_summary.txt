@@ -1,0 +1,37 @@
+ Family: gaussian 
+  Links: mu = identity; sigma = identity 
+Formula: valence ~ event_category + group + (1 | id) 
+   Data: df (Number of observations: 7249) 
+  Draws: 4 chains, each with iter = 10000; warmup = 2000; thin = 1;
+         total post-warmup draws = 32000
+
+Multilevel Hyperparameters:
+~id (Number of levels: 177) 
+              Estimate Est.Error l-95% CI u-95% CI   Rhat Bulk_ESS Tail_ESS
+sd(Intercept)   0.8714    0.0494   0.7806   0.9752 1.0004     3914     8134
+
+Regression Coefficients:
+                                             Estimate Est.Error l-95% CI u-95% CI
+Intercept                                      5.0853    0.0913   4.9080   5.2613
+event_categoryLeisureandRecreation             0.1563    0.0387   0.0804   0.2322
+event_categorySocialandPersonalRelationships  -0.0902    0.0393  -0.1681  -0.0131
+event_categoryWorkandProfessionalEngagements  -0.2506    0.0458  -0.3404  -0.1608
+event_categoryHealthandWellMbeing             -0.7897    0.0664  -0.9208  -0.6593
+event_categoryIndeterminate                   -0.0694    0.0576  -0.1823   0.0429
+group1                                        -2.3267    0.1345  -2.5915  -2.0638
+                                               Rhat Bulk_ESS Tail_ESS
+Intercept                                    1.0018     1865     4260
+event_categoryLeisureandRecreation           1.0003    40948    26188
+event_categorySocialandPersonalRelationships 1.0000    39312    25842
+event_categoryWorkandProfessionalEngagements 1.0000    41896    25706
+event_categoryHealthandWellMbeing            1.0001    45625    25576
+event_categoryIndeterminate                  1.0000    36302    28041
+group1                                       1.0017     1846     4296
+
+Further Distributional Parameters:
+      Estimate Est.Error l-95% CI u-95% CI   Rhat Bulk_ESS Tail_ESS
+sigma   1.1259    0.0095   1.1077   1.1446 1.0001    61346    23179
+
+Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
+scale reduction factor on split chains (at convergence, Rhat = 1).

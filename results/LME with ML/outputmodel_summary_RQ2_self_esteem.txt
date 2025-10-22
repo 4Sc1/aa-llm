@@ -1,0 +1,51 @@
+Model Summary for RQ 2  ( self_esteem ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  23730.3   23833.6  -11850.2   23700.3      7231 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.0802 -0.3318  0.0567  0.3558  5.4070 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 1.674    1.294   
+ Residual             1.402    1.184   
+Number of obs: 7246, groups:  id, 177
+
+Fixed effects:
+                                                  Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)                                        8.33850    0.13448  185.83834  62.005  < 2e-16 ***
+event_categoryLeisure and Recreation              -0.01921    0.04169 7086.31170  -0.461 0.644909    
+event_categorySocial and Personal Relationships   -0.11629    0.04494 7088.60106  -2.588 0.009679 ** 
+event_categoryWork and Professional Engagements   -0.15080    0.04878 7100.49674  -3.092 0.001998 ** 
+event_categoryHealth and Well-being               -0.28445    0.07490 7088.22829  -3.798 0.000147 ***
+event_categoryIndeterminate                       -0.19153    0.06268 7140.70661  -3.056 0.002253 ** 
+event_sentimentnegative                           -0.54647    0.08894 7101.84698  -6.144 8.49e-10 ***
+event_sentimentpositive                            0.11634    0.04615 7089.51842   2.521 0.011730 *  
+event_sentimentnone                                0.05949    0.33520 7076.22806   0.177 0.859130    
+groupBPD                                          -4.30301    0.19942  183.50959 -21.578  < 2e-16 ***
+event_sentimentnegative:groupBPD                  -0.71697    0.11034 7110.35400  -6.498 8.70e-11 ***
+event_sentimentpositive:groupBPD                   0.46823    0.06907 7094.91905   6.779 1.30e-11 ***
+event_sentimentnone:groupBPD                      -0.53035    0.36844 7099.57801  -1.439 0.150076    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+APA Style Table:
+                                                                                         Effect       b     SE        t         df       p
+(Intercept)                                                                           Intercept  8.3385 0.1345  62.0051   185.8383 < .0001
+event_categoryLeisure and Recreation                       Event categoryLeisure and Recreation -0.0192 0.0417  -0.4609 7,086.3117   .6449
+event_categorySocial and Personal Relationships Event categorySocial and Personal Relationships -0.1163 0.0449  -2.5878 7,088.6011   .0097
+event_categoryWork and Professional Engagements Event categoryWork and Professional Engagements -0.1508 0.0488  -3.0916 7,100.4967   .0020
+event_categoryHealth and Well-being                         Event categoryHealth and Well-being -0.2845 0.0749  -3.7978 7,088.2283   .0001
+event_categoryIndeterminate                                         Event categoryIndeterminate -0.1915 0.0627  -3.0558 7,140.7066   .0023
+event_sentimentnegative                                                 Event sentimentnegative -0.5465 0.0889  -6.1439 7,101.8470 < .0001
+event_sentimentpositive                                                 Event sentimentpositive  0.1163 0.0462   2.5208 7,089.5184   .0117
+event_sentimentnone                                                         Event sentimentnone  0.0595 0.3352   0.1775 7,076.2281   .8591
+groupBPD                                                                               GroupBPD -4.3030 0.1994 -21.5778   183.5096 < .0001
+event_sentimentnegative:groupBPD                     Event sentimentnegative $\\times$ GroupBPD -0.7170 0.1103  -6.4979 7,110.3540 < .0001
+event_sentimentpositive:groupBPD                     Event sentimentpositive $\\times$ GroupBPD  0.4682 0.0691   6.7793 7,094.9191 < .0001
+event_sentimentnone:groupBPD                             Event sentimentnone $\\times$ GroupBPD -0.5303 0.3684  -1.4394 7,099.5780   .1501

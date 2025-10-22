@@ -1,0 +1,10 @@
+Bootstrap results for Fleiss' kappa
+Replicates: 1000
+Mean: 0.704036
+Std:  0.011412
+Quantiles:
+  2.5%: 0.681602
+  25%: 0.696110
+  50%: 0.703819
+  75%: 0.711791
+  97.5%: 0.725463

@@ -1,0 +1,3 @@
+Fleiss' kappa (bootstrap percentile 95% CI)
+κ̂ = 0.704427
+95% CI: [0.681602, 0.725463]

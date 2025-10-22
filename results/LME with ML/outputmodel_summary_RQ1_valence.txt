@@ -1,0 +1,48 @@
+Model Summary for RQ 1  ( valence ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  22865.0   22927.0  -11423.5   22847.0      7240 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.4480 -0.4780  0.0968  0.5007  4.2681 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.7386   0.8594  
+ Residual             1.2663   1.1253  
+Number of obs: 7249, groups:  id, 177
+
+Fixed effects:
+                                                  Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)                                        5.08624    0.09077  189.37489  56.037  < 2e-16 ***
+event_categoryLeisure and Recreation               0.15605    0.03859 7104.60653   4.044 5.32e-05 ***
+event_categorySocial and Personal Relationships   -0.09050    0.03952 7120.38013  -2.290    0.022 *  
+event_categoryWork and Professional Engagements   -0.25072    0.04613 7133.06357  -5.435 5.66e-08 ***
+event_categoryHealth and Well-being               -0.79037    0.06594 7129.51777 -11.986  < 2e-16 ***
+event_categoryIndeterminate                       -0.06952    0.05773 7214.31999  -1.204    0.229    
+groupBPD                                          -2.32958    0.13309  178.76466 -17.503  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) ev_LaR e_SaPR e_WaPE e_HaW- evnt_I
+evnt_ctgLaR -0.140                                   
+evnt_ctSaPR -0.130  0.331                            
+evnt_ctWaPE -0.138  0.288  0.265                     
+evnt_ctHaW- -0.065  0.193  0.237  0.151              
+evnt_ctgryI -0.085  0.226  0.253  0.178  0.198       
+groupBPD    -0.655 -0.006 -0.029  0.023 -0.045 -0.047
+
+APA Style Table:
+                                                                                         Effect       b     SE        t         df       p
+(Intercept)                                                                           Intercept  5.0862 0.0908  56.0365   189.3749 < .0001
+event_categoryLeisure and Recreation                       Event categoryLeisure and Recreation  0.1561 0.0386   4.0437 7,104.6065 < .0001
+event_categorySocial and Personal Relationships Event categorySocial and Personal Relationships -0.0905 0.0395  -2.2900 7,120.3801   .0220
+event_categoryWork and Professional Engagements Event categoryWork and Professional Engagements -0.2507 0.0461  -5.4350 7,133.0636 < .0001
+event_categoryHealth and Well-being                         Event categoryHealth and Well-being -0.7904 0.0659 -11.9857 7,129.5178 < .0001
+event_categoryIndeterminate                                         Event categoryIndeterminate -0.0695 0.0577  -1.2043 7,214.3200   .2285
+groupBPD                                                                               GroupBPD -2.3296 0.1331 -17.5032   178.7647 < .0001

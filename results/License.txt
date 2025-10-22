@@ -1,0 +1,13 @@
+License Type: The research results presented in this folder and subfolders are licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+Licensors:
+Research Results: David Levi Tekampe, Tobias Kockler, Ulrich W. Ebner-Priemer, Angelica Mendes, Martin Bohus, Philip S. Santangelo.
+	Underlying Data: Originates from the Karlsruhe Institute of Technology.
+
+Original Data License: The underlying data utilised in this research is also licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0), consistent with the licensing of these results.
+
+Data Accessibility: The original data is not accessible.
+
+License Details: For a comprehensive understanding of your rights and obligations under this license, please refer to the full license text available at the Creative Commons website: Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+By using, distributing, or building upon the research results, you agree to abide by the terms outlined in the CC BY 4.0 license, including the appropriate attribution to the original data source and the providers of these research results.

@@ -1,0 +1,51 @@
+Model Summary for RQ 2  ( valence ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  22400.7   22504.0  -11185.4   22370.7      7234 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.5057 -0.4783  0.0944  0.5090  4.5791 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.7221   0.8498  
+ Residual             1.1845   1.0884  
+Number of obs: 7249, groups:  id, 177
+
+Fixed effects:
+                                                  Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)                                        5.07011    0.09023  194.34632  56.190  < 2e-16 ***
+event_categoryLeisure and Recreation               0.06838    0.03830 7104.70233   1.785   0.0742 .  
+event_categorySocial and Personal Relationships   -0.10606    0.04127 7108.77177  -2.570   0.0102 *  
+event_categoryWork and Professional Engagements   -0.20507    0.04478 7129.80255  -4.580 4.74e-06 ***
+event_categoryHealth and Well-being               -0.34016    0.06879 7107.94849  -4.945 7.79e-07 ***
+event_categoryIndeterminate                       -0.01974    0.05737 7192.53196  -0.344   0.7308    
+event_sentimentnegative                           -0.77725    0.08165 7132.42401  -9.519  < 2e-16 ***
+event_sentimentpositive                            0.21892    0.04238 7110.45682   5.165 2.46e-07 ***
+event_sentimentnone                               -0.27045    0.30795 7085.70896  -0.878   0.3799    
+groupBPD                                          -2.32636    0.13342  189.59610 -17.437  < 2e-16 ***
+event_sentimentnegative:groupBPD                  -0.09413    0.10126 7146.48605  -0.930   0.3526    
+event_sentimentpositive:groupBPD                   0.27054    0.06340 7119.93147   4.267 2.00e-05 ***
+event_sentimentnone:groupBPD                       0.03504    0.33825 7126.30543   0.104   0.9175    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+APA Style Table:
+                                                                                         Effect       b     SE        t         df       p
+(Intercept)                                                                           Intercept  5.0701 0.0902  56.1899   194.3463 < .0001
+event_categoryLeisure and Recreation                       Event categoryLeisure and Recreation  0.0684 0.0383   1.7854 7,104.7023   .0742
+event_categorySocial and Personal Relationships Event categorySocial and Personal Relationships -0.1061 0.0413  -2.5701 7,108.7718   .0102
+event_categoryWork and Professional Engagements Event categoryWork and Professional Engagements -0.2051 0.0448  -4.5796 7,129.8026 < .0001
+event_categoryHealth and Well-being                         Event categoryHealth and Well-being -0.3402 0.0688  -4.9450 7,107.9485 < .0001
+event_categoryIndeterminate                                         Event categoryIndeterminate -0.0197 0.0574  -0.3441 7,192.5320   .7308
+event_sentimentnegative                                                 Event sentimentnegative -0.7773 0.0816  -9.5193 7,132.4240 < .0001
+event_sentimentpositive                                                 Event sentimentpositive  0.2189 0.0424   5.1654 7,110.4568 < .0001
+event_sentimentnone                                                         Event sentimentnone -0.2704 0.3079  -0.8782 7,085.7090   .3799
+groupBPD                                                                               GroupBPD -2.3264 0.1334 -17.4365   189.5961 < .0001
+event_sentimentnegative:groupBPD                     Event sentimentnegative $\\times$ GroupBPD -0.0941 0.1013  -0.9296 7,146.4860   .3526
+event_sentimentpositive:groupBPD                     Event sentimentpositive $\\times$ GroupBPD  0.2705 0.0634   4.2674 7,119.9315 < .0001
+event_sentimentnone:groupBPD                             Event sentimentnone $\\times$ GroupBPD  0.0350 0.3382   0.1036 7,126.3054   .9175

@@ -1,0 +1,70 @@
+Fleiss' kappa (unweighted, nominal)
+
+Items (used): 1084  |  Items (dropped due to NaN): 0
+Raters per item: 4
+Categories: ['Daily Routines and Household Activities', 'Health and Well-being', 'Indeterminate', 'Leisure and Recreation', 'Social and Personal Relationships', 'Work and Professional Engagements']
+
+Agreement components:
+  P̄ (mean item agreement): 0.768143
+  P_e (chance agreement):   0.215567
+
+Fleiss' κ: 0.704427
+
+Item-wise agreement (first 10):
+  Item 1: 1.000000
+  Item 2: 1.000000
+  Item 3: 1.000000
+  Item 4: 0.500000
+  Item 5: 0.500000
+  Item 6: 0.500000
+  Item 7: 1.000000
+  Item 8: 0.333333
+  Item 9: 0.333333
+  Item 10: 1.000000
+
+Category proportions p_j:
+  Daily Routines and Household Activities: 0.328413
+  Health and Well-being: 0.052352
+  Indeterminate: 0.095710
+  Leisure and Recreation: 0.188192
+  Social and Personal Relationships: 0.213330
+  Work and Professional Engagements: 0.122002
+
+--- Input previews ---
+
+Fleiss data:
+Input preview (head):
+   Unnamed: 0  ...                                  Rater_P
+0           0  ...  Daily Routines and Household Activities
+1           1  ...        Social and Personal Relationships
+2           2  ...  Daily Routines and Household Activities
+3           3  ...        Social and Personal Relationships
+4           4  ...        Social and Personal Relationships
+
+[5 rows x 5 columns]
+
+Dtypes:
+Unnamed: 0     int64
+Rater_LLM     object
+Rater_A       object
+Rater_D       object
+Rater_P       object
+dtype: object
+
+
+Krippendorff data:
+Input preview (head):
+   rater_llm  rater_a  rater_d  rater_p
+0          1        1        1        1
+1          3        3        3        3
+2          1        1        1        1
+3          3        1        3        3
+4          2        2        2        3
+
+Dtypes:
+rater_llm    int64
+rater_a      int64
+rater_d      int64
+rater_p      int64
+dtype: object
+

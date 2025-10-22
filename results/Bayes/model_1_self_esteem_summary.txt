@@ -1,0 +1,60 @@
+ Family: gaussian 
+  Links: mu = identity; sigma = identity 
+Formula: self_esteem ~ event_category + group + event_category:group + (1 | id) 
+   Data: df (Number of observations: 7246) 
+  Draws: 4 chains, each with iter = 10000; warmup = 1000; thin = 1;
+         total post-warmup draws = 36000
+
+Multilevel Hyperparameters:
+~id (Number of levels: 177) 
+              Estimate Est.Error l-95% CI u-95% CI   Rhat Bulk_ESS Tail_ESS
+sd(Intercept)   1.2992    0.0722   1.1660   1.4496 1.0027     1864     3935
+
+Regression Coefficients:
+                                                    Estimate Est.Error l-95% CI
+Intercept                                             8.3250    0.1383   8.0520
+event_categoryLeisureandRecreation                   -0.0011    0.0539  -0.1068
+event_categorySocialandPersonalRelationships         -0.0240    0.0601  -0.1435
+event_categoryWorkandProfessionalEngagements         -0.1832    0.0582  -0.2987
+event_categoryHealthandWellMbeing                    -0.5131    0.1438  -0.7960
+event_categoryIndeterminate                          -0.0698    0.0984  -0.2623
+group1                                               -4.2642    0.2085  -4.6713
+event_categoryLeisureandRecreation:group1             0.1526    0.0864  -0.0162
+event_categorySocialandPersonalRelationships:group1  -0.2198    0.0870  -0.3900
+event_categoryWorkandProfessionalEngagements:group1   0.0140    0.1201  -0.2196
+event_categoryHealthandWellMbeing:group1             -0.4723    0.1675  -0.8002
+event_categoryIndeterminate:group1                   -0.2862    0.1297  -0.5386
+                                                    u-95% CI   Rhat Bulk_ESS
+Intercept                                             8.5965 1.0066      798
+event_categoryLeisureandRecreation                    0.1064 1.0003    18012
+event_categorySocialandPersonalRelationships          0.0930 1.0002    17187
+event_categoryWorkandProfessionalEngagements         -0.0696 1.0004    18477
+event_categoryHealthandWellMbeing                    -0.2298 1.0000    17346
+event_categoryIndeterminate                           0.1252 1.0001    16475
+group1                                               -3.8502 1.0055      862
+event_categoryLeisureandRecreation:group1             0.3230 1.0004    17889
+event_categorySocialandPersonalRelationships:group1  -0.0505 1.0004    16094
+event_categoryWorkandProfessionalEngagements:group1   0.2513 1.0004    19992
+event_categoryHealthandWellMbeing:group1             -0.1428 1.0000    16418
+event_categoryIndeterminate:group1                   -0.0343 1.0002    14978
+                                                    Tail_ESS
+Intercept                                               1983
+event_categoryLeisureandRecreation                     24587
+event_categorySocialandPersonalRelationships           23685
+event_categoryWorkandProfessionalEngagements           24392
+event_categoryHealthandWellMbeing                      22685
+event_categoryIndeterminate                            23273
+group1                                                  2044
+event_categoryLeisureandRecreation:group1              24316
+event_categorySocialandPersonalRelationships:group1    23648
+event_categoryWorkandProfessionalEngagements:group1    24074
+event_categoryHealthandWellMbeing:group1               21772
+event_categoryIndeterminate:group1                     22699
+
+Further Distributional Parameters:
+      Estimate Est.Error l-95% CI u-95% CI   Rhat Bulk_ESS Tail_ESS
+sigma   1.2338    0.0103   1.2137   1.2543 1.0000    36410    26561
+
+Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
+scale reduction factor on split chains (at convergence, Rhat = 1).

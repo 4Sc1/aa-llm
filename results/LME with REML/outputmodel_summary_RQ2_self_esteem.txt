@@ -1,0 +1,50 @@
+Model Summary for RQ 2  ( self_esteem ):
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: formula
+   Data: data
+
+REML criterion at convergence: 23742.5
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.0763 -0.3309  0.0565  0.3556  5.4033 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 1.694    1.301   
+ Residual             1.405    1.185   
+Number of obs: 7246, groups:  id, 177
+
+Fixed effects:
+                                                  Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)                                        8.33849    0.13524  183.65020  61.655  < 2e-16 ***
+event_categoryLeisure and Recreation              -0.01919    0.04172 7075.17709  -0.460  0.64555    
+event_categorySocial and Personal Relationships   -0.11625    0.04497 7077.43980  -2.585  0.00976 ** 
+event_categoryWork and Professional Engagements   -0.15078    0.04881 7089.19693  -3.089  0.00202 ** 
+event_categoryHealth and Well-being               -0.28437    0.07496 7077.07218  -3.794  0.00015 ***
+event_categoryIndeterminate                       -0.19151    0.06273 7128.94111  -3.053  0.00227 ** 
+event_sentimentnegative                           -0.54646    0.08901 7090.52948  -6.139 8.75e-10 ***
+event_sentimentpositive                            0.11632    0.04619 7078.34565   2.518  0.01181 *  
+event_sentimentnone                                0.05951    0.33546 7065.21114   0.177  0.85921    
+groupBPD                                          -4.30301    0.20056  181.37217 -21.455  < 2e-16 ***
+event_sentimentnegative:groupBPD                  -0.71709    0.11043 7098.93961  -6.494 8.93e-11 ***
+event_sentimentpositive:groupBPD                   0.46822    0.06912 7083.68415   6.774 1.35e-11 ***
+event_sentimentnone:groupBPD                      -0.53011    0.36874 7088.29945  -1.438  0.15058    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+APA Style Table:
+                                                                                         Effect       b     SE        t         df       p
+(Intercept)                                                                           Intercept  8.3385 0.1352  61.6551   183.6502 < .0001
+event_categoryLeisure and Recreation                       Event categoryLeisure and Recreation -0.0192 0.0417  -0.4600 7,075.1771   .6455
+event_categorySocial and Personal Relationships Event categorySocial and Personal Relationships -0.1162 0.0450  -2.5848 7,077.4398   .0098
+event_categoryWork and Professional Engagements Event categoryWork and Professional Engagements -0.1508 0.0488  -3.0888 7,089.1969   .0020
+event_categoryHealth and Well-being                         Event categoryHealth and Well-being -0.2844 0.0750  -3.7937 7,077.0722   .0001
+event_categoryIndeterminate                                         Event categoryIndeterminate -0.1915 0.0627  -3.0530 7,128.9411   .0023
+event_sentimentnegative                                                 Event sentimentnegative -0.5465 0.0890  -6.1390 7,090.5295 < .0001
+event_sentimentpositive                                                 Event sentimentpositive  0.1163 0.0462   2.5183 7,078.3457   .0118
+event_sentimentnone                                                         Event sentimentnone  0.0595 0.3355   0.1774 7,065.2111   .8592
+groupBPD                                                                               GroupBPD -4.3030 0.2006 -21.4554   181.3722 < .0001
+event_sentimentnegative:groupBPD                     Event sentimentnegative $\\times$ GroupBPD -0.7171 0.1104  -6.4938 7,098.9396 < .0001
+event_sentimentpositive:groupBPD                     Event sentimentpositive $\\times$ GroupBPD  0.4682 0.0691   6.7738 7,083.6841 < .0001
+event_sentimentnone:groupBPD                             Event sentimentnone $\\times$ GroupBPD -0.5301 0.3687  -1.4376 7,088.2995   .1506
