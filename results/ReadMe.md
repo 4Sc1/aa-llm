@@ -1,80 +1,126 @@
-# Study Results — Folder Guide
+# Results Folder README
 
-This README describes the contents of the `results` folder to accompany the manuscript and source code.
+## Overview
 
-## Top-level layout
-- `Bayes/` — Outputs from Bayesian multilevel models (brms/Stan).
-- `LME with ML/` — Linear mixed-effects models fitted by **maximum likelihood** (lmer/lmerTest), including bootstrap CIs and model R².
-- `LME with REML/` — Linear mixed-effects models fitted by **REML** (lmer/lmerTest).
-- `IRR/` — Inter-rater reliability (Fleiss' κ and pairwise Cohen’s κ).
+This folder contains the statistical output files supporting the manuscript:
 
----
+**Differential Reactivity of Affect and Self-Esteem in Borderline Personality Disorder to Daily Events: Contextual Insights from Large Language Models in Ambulatory Assessment**
 
-## Conventions used across files
-- **Outcomes**: `calmness`, `self_esteem`, `valence`.
-- **Event categories** (where applicable): *Daily Routines and Household Activities*, *Leisure and Recreation*, *Social and Personal Relationships*, *Work and Professional Engagements*, *Health and Well-being*, *Indeterminate*.
-- **Grouping variables** seen in outputs: `group` (integer codes), random intercept `id`.
-- **Model identifiers**: `model_1`, `model_2` (two model specifications; see manuscript for definitions).
-- Unless noted, tables are comma‑separated values (CSV).
+The directory is intended for repository deposition alongside the associated manuscript and analysis scripts. It provides organised model outputs for the principal analyses, supplementary sensitivity analyses, Bayesian models, bootstrap estimates, covariance-structure checks, and scale reliability analyses.
 
----
+## Author information
 
-## `Bayes/`
-Bayesian hierarchical model outputs.
+**David Levi Tekampe**  
+PhD Researcher  
+University of Luxembourg  
+Department of Behavioural and Cognitive Science
 
-**Files & patterns**
-- `model_*_{calmness,self_esteem,valence}_summary.csv`  
-  Posterior summaries of fixed effects. Columns typically include: `Parameter`, `Estimate`, `Est.Error`, `l-95% CI`, `u-95% CI`, `Rhat`, `Bulk_ESS`, `Tail_ESS`.
-- `model_*_{calmness,self_esteem,valence}_summary.txt`  
-  Formatted `brms` summaries (family/links, formula, draws, random effects, fixed effects).
-- `model_*_{calmness,self_esteem,valence}_ppc_summary.csv`  
-  Posterior predictive checks by `group` and `event_category` with columns: `Mean`, `Median`, `SD`, `ETI 2.5%`, `ETI 97.5%`, `HDI 2.5%`, `HDI 97.5%`.
-- `combined_mcmc_diagnostics_b_Intercept.png`  
-  MCMC diagnostics figure for the intercept term (use to inspect mixing and convergence).
+## Contents of the results directory
 
-**Notes**
-- Random‑effects structure includes a subject‐level intercept: `(1 | id)`.
-- Use these outputs for effect estimates, uncertainty, and PPC summaries.
+### `MixedEffects/`
+Contains the primary linear mixed-effects model summaries and model-level variance explained.
 
----
+Key files include:
+- `model_summary_RQ1_*` — primary mixed-effects models for outcomes by event category and group.
+- `model_summary_RQ2_*` — mixed-effects models including sentiment-related predictors.
+- `model_summary_RQ3_*` — exploratory mixed-effects models using event subcategories.
+- Additional numbered summaries (for example, `RQ11`, `RQ12`, `RQ111`, and `RQ222`) correspond to extended and sensitivity analyses generated within the mixed-effects workflow.
+- `Combined_R2_Results_all_models.csv` — marginal and conditional \(R^2\) values across fitted mixed-effects models.
 
-## `LME with ML/`
-Frequentist linear mixed‑effects models fitted by maximum likelihood.
+Outcomes are reported separately for:
+- `self_esteem`
+- `valence`
+- `calmness`
 
-**Files & patterns**
-- `outputmodel_summary_RQ{1,2,3}_{calmness,self_esteem,valence}.txt`  
-  `lmer(lmerTest)` model summaries (AIC/BIC, random‑effects variance components, Satterthwaite t‑tests for fixed effects).
-- `bootstrap_results_RQ{1,2,4}_{calmness,self_esteem,valence}.csv`  
-  Bootstrap confidence intervals for fixed effects. Columns: `Coefficient`, `Mean`, `CI_Lower`, `CI_Upper`.
-- `Combined_R2_Results.csv`  
-  Marginal and conditional R² per model. **Semicolon‑delimited** with **comma decimal separator** (European format).
+### `Bayes/`
+Contains Bayesian model summaries exported as fixed-effects tables for the same substantive model families as the mixed-effects analyses.
 
-**Read hints**
-- R: `read.csv2("LME with ML/Combined_R2_Results.csv")`  
-- Python: `pd.read_csv(".../Combined_R2_Results.csv", sep=";")` (convert comma decimals if needed).
+Files follow the pattern:
+- `model_1_*_fixed_effects.csv`
+- `model_2_*_fixed_effects.csv`
+- `model_3_*_fixed_effects.csv`
 
----
+These files report posterior estimates, uncertainty intervals, convergence indices, and effective sample size diagnostics for each fixed effect.
 
-## `LME with REML/`
-Frequentist linear mixed‑effects models fitted by restricted maximum likelihood.
+### `Bootstrap/`
+Contains bootstrap summaries for the mixed-effects models.
 
-**Files & patterns**
-- `outputmodel_summary_RQ{1,2,3}_{calmness,self_esteem,valence}.txt`  
-  `lmer(lmerTest)` summaries analogous to ML fits, but estimated with REML.
-- (No bootstrap or R² tables in this folder.)
+Files follow the pattern:
+- `bootstrap_results_RQ1_*`
+- `bootstrap_results_RQ2_*`
+- `bootstrap_results_RQ3_*`
 
-**Use**
-- Prefer REML summaries for unbiased variance‑component estimation; prefer ML for likelihood‑based model comparison.
+Each file includes the bootstrap mean estimate and percentile-based 95% confidence interval for each coefficient.
 
----
+### `Covariate/`
+Contains covariate-adjusted mixed-effects model summaries used as sensitivity analyses.
 
-## `IRR/`
-Inter‑rater reliability for the qualitative coding scheme.
+Files follow the pattern:
+- `model_summary_RQ11_*`
+- `model_summary_RQ12_*`
 
-**Files**
-- `fleiss_kappa_results.txt` — Overall Fleiss’ κ with components (P̄, Pₑ), item‑wise agreement for a sample, and category proportions.
-- `fleiss_kappa_ci_results.txt` — Confidence interval for Fleiss’ κ (analytic).
-- `bootstrap_fleiss_kappa_ci_results.txt` — Bootstrap confidence interval for Fleiss’ κ.
-- `pairwise_cohens_kappa_matrix.csv` — Symmetric matrix of pairwise Cohen’s κ between raters (diagonal = 1).
+These models extend the primary analyses by adjusting for demographic covariates included in the analytical workflow.
 
----
+### `Covariance_Structure_Selection/`
+Contains sensitivity analyses evaluating alternative residual covariance structures for selected mixed-effects models.
+
+Included outputs comprise:
+- model-specific fit tables
+- likelihood-ratio test summaries
+- comparisons of fixed effects between baseline and best-fitting covariance structures
+- combined summary tables across models
+
+Representative files include:
+- `combined_covstruct_fit_tables.csv`
+- `combined_covstruct_lrt_vs_ind.csv`
+- `combined_sensitivity_changed_terms_summary.csv`
+
+### Top-level file
+- `reliability_summary.csv` — summary reliability estimates for key two-item affect scales.
+
+## Analytical overview
+
+The results are organised around three principal model families:
+
+### Model 1
+Primary mixed-effects models examining associations between **event category**, **group**, and their interaction for the outcomes:
+- self-esteem
+- valence
+- calmness
+
+### Model 2
+Mixed-effects models extending Model 1 by incorporating **sentiment-related predictors**, including within-person and between-person sentiment components.
+
+### Model 3
+Exploratory mixed-effects models examining **event subcategories** in relation to the same outcomes.
+
+In addition to these principal analyses, the folder includes:
+- Bayesian counterparts to the main model families
+- bootstrap-based robustness checks
+- covariate-adjusted sensitivity models
+- covariance-structure selection diagnostics
+- reliability estimates for scale components
+
+## File naming conventions
+
+- `RQ1`, `RQ2`, `RQ3` refer to the main research-question model families.
+- Suffixes such as `self_esteem`, `valence`, and `calmness` identify the dependent variable.
+- Files labelled `fixed_effects` contain parameter-level summaries.
+- Files labelled `model_summary` contain full text summaries of fitted models.
+- Files labelled `bootstrap_results` contain bootstrap-based coefficient summaries.
+- Files labelled `fit_table`, `lrt_vs_ind`, and `fixed_effects_compare_lmer_vs_best` belong to covariance-structure sensitivity analyses.
+
+## File formats
+
+The folder contains plain-text (`.txt`) and comma- or semicolon-delimited (`.csv`) files generated directly from the analytical workflow in R. Delimiters may differ across files because different export functions were used during model generation.
+
+## Reproducibility note
+
+These files are derived outputs and should be interpreted together with the accompanying analysis scripts and manuscript. The directory does **not** contain raw participant data. Reproduction of the results requires access to the underlying dataset and the corresponding R analysis scripts.
+
+## Recommended citation of this results folder
+
+When referring to this directory in a repository or supplement, it may be described as:
+
+> Statistical output files supporting the manuscript by David Levi Tekampe, University of Luxembourg, Department of Behavioural and Cognitive Science.
+

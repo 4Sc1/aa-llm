@@ -1,19 +1,20 @@
-# BPD Event Text & Modelling Scripts (R & Python)
 
-This repository contains analysis and data-processing scripts for the manuscript *“Differential Reactivity of Affect and Self‑Esteem in Borderline Personality Disorder to Daily Events: Contextual Insights from Large Language Models in Ambulatory Assessment”*.
+# BPD Event Text Processing & Modelling Scripts (R & Python)
 
-All scripts are in a single folder. Inputs are CSV files (UTF‑8); unless stated otherwise, columns are separated by semicolons `;`.
+This repository contains analysis and data-processing scripts for the manuscript *“Differential Reactivity of Affect and Self-Esteem in Borderline Personality Disorder to Daily Events: Contextual Insights from Large Language Models in Ambulatory Assessment”*.
+
+All scripts are in a single folder. Inputs are CSV files (UTF-8); unless stated otherwise, columns are separated by semicolons `;`.
 
 ## Contents
 
-- **BPD_BayesBRMS.R** — Bayesian multilevel models (brms) for self-esteem, valence, and calmness reactivity.
-- **BPD_Categorisation.py** — Categorise event texts into predefined categories via OpenAI API.
-- **BPD_InterraterReliability.r** — Compute inter-rater reliability (Fleiss' κ, Krippendorff's α), bootstrap CIs, and pairwise Cohen's κ.
-- **BPD_LinearMixedEffects.R** — Fit linear mixed-effects models, bootstrap summaries, compute marginal/conditional R², and generate plots.
-- **BPD_NaturalLanguageProcessingPipeline.py** — 
-- **BPD_PersonalDataCheckInTextEntries.py** — Detect potential PII in dataset entries using spaCy NER and regex.
-- **BPD_Sentiment.py** — Assign sentiment labels to full-text event entries (OpenAI API).
-- **BPD_Translation.py** — Translate full-text entries from German to English using the OpenAI API.
+- **`BPD_Bayes.R`** — Bayesian modelling script using `brms`; includes factor coding for event subcategories, event sentiment, and diary type.
+- **`BPD_InterraterReliability.R`** — Inter-rater reliability script; the visible excerpt shows pairwise kappa calculation and output.
+- **`BPD_LinearMixedEffects.R`** — Linear mixed-effects analyses, bootstrap procedures, \( R^2 \) summaries, covariance-structure comparisons, and plot generation.
+- **`BPD_NaturalLanguageProcessingPipeline.py`** — Natural-language-processing pipeline that writes combined top-1000 bigram and trigram frequency tables.
+- **`BPD_Ngrams_Event_Categorisation.py`** — Uses the OpenAI API to derive main event categories from frequent n-grams.
+- **`BPD_PersonalDataCheckInTextEntries.py`** — Detects potential personal data in text entries using spaCy named-entity recognition and regex matching.
+- **`BPD_Subevent_Categorisation.py`** — Contains the prompt used to derive parsimonious subcategories within broader main event categories.
+- **`Lincense.txt`** — MIT licence file.
 
 ## Environment & Setup
 
@@ -25,11 +26,12 @@ All scripts are in a single folder. Inputs are CSV files (UTF‑8); unless state
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # on Windows: .venv\Scripts\activate
-pip install pandas openai spacy contractions language-tool-python tqdm
-python -m spacy download en_core_web_lg de_core_news_lg
+pip install pandas openai spacy
+python -m spacy download en_core_web_lg
+python -m spacy download de_core_news_lg
 ```
 
-- Set your OpenAI API key (recommended via environment variable):
+- Set your OpenAI API key if you run one of the API-based scripts:
 
 ```bash
 export OPENAI_API_KEY='your-key'   # PowerShell: $Env:OPENAI_API_KEY='your-key'
@@ -37,122 +39,249 @@ export OPENAI_API_KEY='your-key'   # PowerShell: $Env:OPENAI_API_KEY='your-key'
 
 ### R
 
-- R ≥ 4.2 recommended. The R scripts define a helper that installs missing packages at runtime.
-
-- To pre-install packages explicitly:
-
-```r
-install.packages(c("MuMIn" "boot" "car" "distributional" "dplyr" "forecast" "ggeffects" "ggplot2" "ggtext" "gridExtra" "htmltools" "irr" "irrCAC" "knitr" "lme4" "lmerTest" "magrittr" "multilevelTools" "naniar" "pROC" "papaja" "patchwork" "plotly" "psych" "raters" "readr" "report" "sjPlot" "tibble" "tidybayes" "utils" "webshot"), dependencies = TRUE)
-```
+- R ≥ 4.2 recommended.
+- The R scripts include code for installing/loading packages at runtime.
 
 ## Scripts — Purpose, I/O, and Running
 
-### BPD_BayesBRMS.R
+### `BPD_Bayes.R`
 
-**Purpose:** Bayesian multilevel models (brms) for self-esteem, valence, and calmness reactivity.
-**Inputs:**
-- CSV (UTF-8, ';') with required variables.
-**Outputs:**
-- One CSV summary per fitted model via `save_brms_summary_as_csv()`.
-**Notes:**
-- Defines `required_packages` incl. brms-related tooling (tidybayes, distributional).
-- Set `file_path` and `output_base_path` in the config section.
-**Run:**
-```bash
-Rscript BPD_BayesBRMS.R
+Bayesian modelling script using `brms`.
+
+The visible excerpt shows:
+
+- factor coding for `event_subcategory`
+- factor coding for `event_sentiment`
+- factor coding for `ediary_type`
+
+The `event_subcategory` levels shown in the script are:
+
+- Entertainment and Media Consumption
+- Personal Care and Hygiene
+- Commuting
+- Meals and Snacks
+- Family Dynamics
+- Socializing and Leisure
+- Travel and Excursions
+- Cultural and Community Events
+- Companion Animal Care
+- Outdoor and Recreational Activities
+- Rest and Sleep
+- Medical Treatment and Healthcare Interactions
+- Healthcare Journeys and Visits
+- Shopping and Errands
+- Household Chores
+- Emotional and Conflict Resolution
+- Work-Related Tasks and Projects
+- Mental Health and Emotional State
+- Indeterminate
+- Romantic Partnerships
+- Mood and Emotional Fluctuations
+- Friendship Activities
+- Acquaintance and Casual Interactions
+- Educational and Academic Work
+- Professional Communication and Meetings
+- Relaxation
+- Leisure and Entertainment at Home
+- Reading and Intellectual Activities
+- Games and Hobbies
+- Financial and Administrative Tasks
+- Physical Health and Symptoms
+- Sports and Physical Activities
+
+Reference levels shown in the excerpt:
+
+- `event_subcategory`: `"Meals and Snacks"`
+- `event_sentiment`: `"neutral"`
+- `ediary_type`: `"2"`
+
+The visible excerpt also shows saving model summaries to CSV:
+
+```r
+for (nm in names(models)) {
+  save_brms_summary_as_csv(models[[nm]], nm, output_base_path)
+}
 ```
 
-### BPD_Categorisation.py
+### `BPD_InterraterReliability.R`
 
-**Purpose:** Categorise event texts into predefined categories via OpenAI API.
-**Inputs:**
-- CSV (semicolon-separated): `event_corrected_de`
-**Outputs:**
-- CSV (semicolon-separated): `event_category`
-**Notes:**
-- Requires `OPENAI_API_KEY`.
-- Replace file path placeholders before running.
-**Run:**
-```bash
-python BPD_Categorisation.py
+Inter-rater reliability script.
+
+The visible excerpt shows pairwise kappa calculation:
+
+```r
+pairwise_kappa_results <- calculate_pairwise_kappa(fleiss_data[, -1])  
+print(pairwise_kappa_results)
 ```
 
-### BPD_InterraterReliability.r
+Because only a short excerpt was attached, no additional claims are made here beyond the visible code.
 
-**Purpose:** Compute inter-rater reliability (Fleiss' κ, Krippendorff's α), bootstrap CIs, and pairwise Cohen's κ.
-**Inputs:**
-- CSV files for Krippendorff's α and Fleiss' κ (UTF-8, ';').
-**Outputs:**
-- TXT summaries: Fleiss' κ, bootstrap CIs, Krippendorff's α.
-**Notes:**
-- Set all four `<path ...>` variables in the header.
-**Run:**
-```bash
-Rscript BPD_InterraterReliability.r
+### `BPD_LinearMixedEffects.R`
+
+Linear mixed-effects analysis script for the manuscript.
+
+The visible excerpts show that the script includes:
+
+- package installation/loading helper code
+- logging to file
+- construction of an `analysis_df`
+- derivation of `day` and `prompt_in_day`
+- p-value formatting helpers
+- bootstrap functions
+- covariance-structure comparison and sensitivity refits
+- plot theme and export helpers
+- model fitting and plotting for:
+  - `self_esteem`
+  - `valence`
+  - `calmness`
+
+Variables explicitly visible in the excerpts include:
+
+- `prompt`
+- `day`
+- `event_evaluation_centered`
+- `event_sentiment`
+- `event_sentiment_encoded`
+- `sentiment_within`
+- `sentiment_mean`
+- `self_esteem`
+- `valence`
+- `calmness`
+- `id`
+- `group`
+- `event_category`
+- `ediary_type`
+- `event_subcategory`
+- `BSL_score`
+- `BPD_severity`
+
+The excerpt also shows the following derived variables:
+
+```r
+df$BPD_severity <- df$bpdanz
+df$BSL_score <- as.numeric(df$BSL_T1_mean)
 ```
 
-### BPD_LinearMixedEffects.R
+and a check that `BSL_T1_mean` exists in the data.
 
-**Purpose:** Fit linear mixed-effects models, bootstrap summaries, compute marginal/conditional R², and generate plots.
-**Inputs:**
-- CSV (UTF-8, ';')
-**Outputs:**
-- Model summaries (CSV/TXT) and figures (various formats).
-**Notes:**
-- Set `file_path` and output locations.
-- Script installs any missing packages at runtime.
-**Run:**
-```bash
-Rscript BPD_LinearMixedEffects.R
+Example plotting calls shown in the excerpt include:
+
+- `plot_m1_event_by_group(...)`
+- `plot_m2_sentiment_by_group(...)`
+
+### `BPD_NaturalLanguageProcessingPipeline.py`
+
+Natural-language-processing pipeline.
+
+The visible excerpt shows that the script writes:
+
+- `ngrams_top1000_bigrams_combined.csv`
+- `ngrams_top1000_trigrams_combined.csv`
+
+using:
+
+```python
+save_csv(df_top_bi_all,  "ngrams_top1000_bigrams_combined.csv")
+save_csv(df_top_tri_all, "ngrams_top1000_trigrams_combined.csv")
 ```
 
-### BPD_PersonalDataCheckInTextEntries.py
+and is run through:
 
-**Purpose:** Detect potential PII in dataset entries using spaCy NER and regex.
-**Inputs:**
-- CSV (UTF-8, ';'): typically scans `event_original (DE)` if present.
-**Outputs:**
-- `suspect_entities.csv`: rows containing any PII with per-column matches
-- `pii_summary.csv`: dataset-level counts per PII type
-**Notes:**
-- Install spaCy models: `python -m spacy download en_core_web_lg de_core_news_lg`.
-- PII signals: NER labels {PERSON,GPE,LOC,ORG,NORP,DATE,TIME} + EMAIL/PHONE/URL/HANDLE/IBAN regexes.
-**Run:**
-```bash
-python BPD_PersonalDataCheckInTextEntries.py
+```python
+if __name__ == "__main__":
+    main()
 ```
 
-### BPD_Sentiment.py
+### `BPD_Ngrams_Event_Categorisation.py`
 
-**Purpose:** Assign sentiment labels to full-text event entries (OpenAI API).
-**Inputs:**
-- CSV (semicolon-separated): `event_corrected_de`
-**Outputs:**
-- CSV (semicolon-separated): `event_sentiment` (e.g., Negative/Neutral/Positive/None)
-**Notes:**
-- Requires `OPENAI_API_KEY`.
-- Model used: `gpt-3.5-turbo`.
-- Replace `<path to input CSV file>` and destination path placeholders.
-**Run:**
-```bash
-python BPD_Sentiment.py
+Script for deriving main event categories from frequent n-grams using the OpenAI API.
+
+The attached file states:
+
+**Input:**
+- `ngrams_top1000_bigrams_de.csv`
+- `ngrams_top1000_trigrams_de.csv`
+
+**Output:**
+- `ngram_derived_main_categories_raw.txt`
+- `ngram_derived_main_categories.txt`
+
+The visible excerpt also shows:
+
+- use of the OpenAI client
+- `model = "gpt-3.5-turbo"`
+- `temperature = 0.2`
+- `max_tokens = 1200`
+- `timeout_seconds = 60`
+
+and the logic:
+
+```python
+if not any(c.strip().lower() == "indeterminate" for c in cats):
+    cats.append("Indeterminate")
 ```
 
-### BPD_Translation.py
+The script contains placeholder paths that must be edited before execution.
 
-**Purpose:** Translate full-text entries from German to English using the OpenAI API.
-**Inputs:**
-- CSV (comma-separated): `skill_corrected_de`, `event_corrected_de`
-**Outputs:**
-- CSV (semicolon-separated): `skill_en`, `event_en`
-**Notes:**
-- Define `OPENAI_API_KEY` as an environment variable (recommended).
-- Model used in code: `gpt-3.5-turbo`.
-- Replace `<path to input CSV file>` and output path placeholders in the script.
-**Run:**
-```bash
-python BPD_Translation.py
-```
+### `BPD_PersonalDataCheckInTextEntries.py`
+
+Script for detecting potentially identifying information in text entries.
+
+The visible excerpt shows that the following columns are scanned:
+
+- `event_original`
+- `event_corrected_de`
+- `event_en`
+
+The file loads the spaCy models:
+
+- `de_core_news_lg`
+- `en_core_web_lg`
+
+Named-entity labels of interest are:
+
+- `PERSON`
+- `GPE`
+- `LOC`
+- `ORG`
+- `NORP`
+- `DATE`
+- `TIME`
+
+The regexes shown in the excerpt detect:
+
+- email addresses
+- phone numbers
+- URLs
+- handles
+- IBANs
+
+### `BPD_Subevent_Categorisation.py`
+
+Script containing the prompt for deriving subcategories within broader main event categories.
+
+The visible excerpt shows a `system_prompt` instructing the model to act as a clinical psychologist and to propose a parsimonious set of meaningful subcategories within a given main category.
+
+The prompt explicitly defines these main categories:
+
+1. **Daily Routines and Household Activities**
+2. **Leisure and Recreation**
+3. **Social and Personal Relationships**
+4. **Work and Professional Engagements**
+
+The visible excerpt ends partway through the fourth category definition, so no further claims are made here about the remainder of the file.
+
+### `Lincense.txt`
+
+MIT License file.
+
+The attached file name is `Lincense.txt`.
+
+## Notes
+
+- Several files contain placeholder paths such as `<path to ...>` and require manual editing before use.
+- Some files are only partially visible in the attached excerpts; this README therefore describes only what is directly supported by those excerpts.
+- Scripts using the OpenAI API require a valid API key.
 
 ## Detected Dependencies
 

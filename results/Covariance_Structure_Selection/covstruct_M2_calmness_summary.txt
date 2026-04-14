@@ -1,0 +1,38 @@
+Covariance structure comparison + sensitivity refit
+Model label:  M2_calmness 
+
+Fixed (nlme):
+calmness ~ event_category + group + sentiment_mean + sentiment_within *     group
+
+Random structure: id
+Correlation grouping: id/day_ar1 ; time = prompt_in_day
+Min obs per person-day kept: 3
+
+Fit table (sorted by AIC):
+ model_label   structure random_structure      AIC      BIC    logLik n_obs
+ M2_calmness        CAR1               id 32215.14 32309.68 -16094.57 10639
+ M2_calmness          CS               id 33019.51 33114.05 -16496.75 10639
+ M2_calmness Independent               id 33517.52 33604.79 -16746.76 10639
+ cor_param
+        NA
+        NA
+        NA
+
+Best (AIC): CAR1
+Best (BIC): CAR1
+
+Failed to converge / fit:
+ - AR1: Coefficient matrix not invertible
+
+LRTs vs Independent:
+ model_label random_structure             compare      LRT df             p
+ M2_calmness               id   CS vs Independent  500.016  1 9.429717e-111
+ M2_calmness               id CAR1 vs Independent 1304.383  1 1.261135e-285
+
+Fixed-effects comparison (lmer vs nlme best):
+Changed terms (significance and/or sign): 0
+
+Notes:
+- lmer fit is ML with conditionally independent residuals.
+- nlme fits are ML on the same filtered dataset (complete cases; min obs per person-day).
+- Best structure chosen by AIC among converged candidates.

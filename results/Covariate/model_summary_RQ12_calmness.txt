@@ -1,0 +1,77 @@
+Model Summary for RQ 12  ( calmness ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  33136.8   33340.0  -16540.4   33080.8     10460 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.4862 -0.5521  0.0954  0.5653  3.9689 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.6432   0.802   
+ Residual             1.2725   1.128   
+Number of obs: 10488, groups:  id, 260
+
+Fixed effects:
+                                                     Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)                                         5.211e+00  4.364e-01  2.609e+02  11.941  < 2e-16 ***
+event_categoryLeisure and Recreation               -1.063e-02  3.273e-02  1.028e+04  -0.325   0.7453    
+event_categorySocial and Personal Relationships    -2.661e-01  3.282e-02  1.030e+04  -8.108 5.74e-16 ***
+event_categoryWork and Professional Engagements    -3.117e-01  3.968e-02  1.031e+04  -7.855 4.38e-15 ***
+event_categoryHealth and Well-being                -4.326e-01  5.463e-02  1.031e+04  -7.919 2.65e-15 ***
+event_categoryIndeterminate                        -3.642e-02  4.909e-02  1.040e+04  -0.742   0.4582    
+sentiment_within                                    3.061e-01  3.105e-02  1.023e+04   9.857  < 2e-16 ***
+groupBPD                                           -1.946e+00  1.590e-01  2.593e+02 -12.234  < 2e-16 ***
+sentiment_mean                                      1.170e+00  2.890e-01  2.690e+02   4.048 6.76e-05 ***
+family_statuscohabiting relationship               -1.121e-01  1.661e-01  2.593e+02  -0.675   0.5005    
+family_statusmarried                               -4.581e-02  1.713e-01  2.600e+02  -0.267   0.7894    
+family_statusliving separately                      7.304e-01  4.066e-01  2.593e+02   1.796   0.0736 .  
+family_statusdivorced                               1.150e-02  3.137e-01  2.583e+02   0.037   0.9708    
+highest_educationsecondary school                  -2.828e-01  4.296e-01  2.611e+02  -0.658   0.5109    
+highest_educationintermediate school               -3.380e-01  4.238e-01  2.601e+02  -0.798   0.4258    
+highest_educationuniversity entrance qualification -4.436e-01  4.315e-01  2.604e+02  -1.028   0.3049    
+highest_educationothers                            -4.354e-01  7.424e-01  2.679e+02  -0.586   0.5580    
+work_statusregistered unemployed                    1.940e-02  2.048e-01  2.606e+02   0.095   0.9246    
+work_statusotherwise unemployed                     7.445e-02  3.489e-01  2.599e+02   0.213   0.8312    
+work_statustraining re-education                   -1.728e-01  1.414e-01  2.616e+02  -1.222   0.2228    
+work_statusdisability pension                      -7.732e-01  2.986e-01  2.612e+02  -2.589   0.0102 *  
+work_statusill                                      1.539e-02  2.477e-01  2.612e+02   0.062   0.9505    
+work_statushousewife                               -3.494e-01  3.389e-01  2.595e+02  -1.031   0.3034    
+work_statussheltered employed                      -6.438e-02  3.367e-01  2.620e+02  -0.191   0.8485    
+work_statusothers                                   1.756e-01  3.011e-01  2.580e+02   0.583   0.5604    
+sentiment_within:groupBPD                           2.372e-01  4.029e-02  1.023e+04   5.887 4.04e-09 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+APA Style Table:
+                                                                                               Effect       b     SE        t          df      p
+(Intercept)                                                                                 Intercept  5.2114 0.4364  11.9408    260.8954 < .001
+event_categoryLeisure and Recreation                             Event categoryLeisure and Recreation -0.0106 0.0327  -0.3249 10,278.2146   .745
+event_categorySocial and Personal Relationships       Event categorySocial and Personal Relationships -0.2661 0.0328  -8.1079 10,298.5098 < .001
+event_categoryWork and Professional Engagements       Event categoryWork and Professional Engagements -0.3117 0.0397  -7.8554 10,314.5306 < .001
+event_categoryHealth and Well-being                               Event categoryHealth and Well-being -0.4326 0.0546  -7.9187 10,307.6486 < .001
+event_categoryIndeterminate                                               Event categoryIndeterminate -0.0364 0.0491  -0.7419 10,399.2878   .458
+sentiment_within                                                                     Sentiment within  0.3061 0.0311   9.8574 10,232.1740 < .001
+groupBPD                                                                                     GroupBPD -1.9455 0.1590 -12.2343    259.2814 < .001
+sentiment_mean                                                                         Sentiment mean  1.1700 0.2891   4.0478    269.0488 < .001
+family_statuscohabiting relationship                             Family statuscohabiting relationship -0.1121 0.1661  -0.6747    259.2715   .500
+family_statusmarried                                                             Family statusmarried -0.0458 0.1713  -0.2673    259.9567   .789
+family_statusliving separately                                         Family statusliving separately  0.7304 0.4066   1.7961    259.3095   .074
+family_statusdivorced                                                           Family statusdivorced  0.0115 0.3137   0.0367    258.2996   .971
+highest_educationsecondary school                                   Highest educationsecondary school -0.2828 0.4296  -0.6583    261.1092   .511
+highest_educationintermediate school                             Highest educationintermediate school -0.3380 0.4237  -0.7977    260.1293   .426
+highest_educationuniversity entrance qualification Highest educationuniversity entrance qualification -0.4436 0.4315  -1.0279    260.3544   .305
+highest_educationothers                                                       Highest educationothers -0.4354 0.7424  -0.5865    267.9483   .558
+work_statusregistered unemployed                                     Work statusregistered unemployed  0.0194 0.2048   0.0947    260.5633   .925
+work_statusotherwise unemployed                                       Work statusotherwise unemployed  0.0744 0.3489   0.2134    259.8773   .831
+work_statustraining re-education                                     Work statustraining re-education -0.1728 0.1414  -1.2220    261.6110   .223
+work_statusdisability pension                                           Work statusdisability pension -0.7732 0.2986  -2.5890    261.2349   .010
+work_statusill                                                                         Work statusill  0.0154 0.2477   0.0621    261.1603   .951
+work_statushousewife                                                             Work statushousewife -0.3494 0.3389  -1.0311    259.5367   .303
+work_statussheltered employed                                           Work statussheltered employed -0.0644 0.3367  -0.1912    261.9504   .849
+work_statusothers                                                                   Work statusothers  0.1756 0.3011   0.5830    258.0042   .560
+sentiment_within:groupBPD                                         Sentiment within $\\times$ GroupBPD  0.2372 0.0403   5.8875 10,231.1903 < .001

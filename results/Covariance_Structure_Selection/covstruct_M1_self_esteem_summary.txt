@@ -1,0 +1,38 @@
+Covariance structure comparison + sensitivity refit
+Model label:  M1_self_esteem 
+
+Fixed (nlme):
+self_esteem ~ event_category + group + event_category:group
+
+Random structure: id
+Correlation grouping: id/day_ar1 ; time = prompt_in_day
+Min obs per person-day kept: 3
+
+Fit table (sorted by AIC):
+    model_label   structure random_structure      AIC      BIC    logLik n_obs
+ M1_self_esteem        CAR1               id 36754.32 36863.64 -18362.16 10813
+ M1_self_esteem          CS               id 37409.82 37519.15 -18689.91 10813
+ M1_self_esteem Independent               id 38192.56 38294.60 -19082.28 10813
+ cor_param
+        NA
+        NA
+        NA
+
+Best (AIC): CAR1
+Best (BIC): CAR1
+
+Failed to converge / fit:
+ - AR1: Coefficient matrix not invertible
+
+LRTs vs Independent:
+    model_label random_structure             compare       LRT df             p
+ M1_self_esteem               id   CS vs Independent  784.7374  1 1.123221e-172
+ M1_self_esteem               id CAR1 vs Independent 1440.2392  1 3.788430e-315
+
+Fixed-effects comparison (lmer vs nlme best):
+Changed terms (significance and/or sign): 0
+
+Notes:
+- lmer fit is ML with conditionally independent residuals.
+- nlme fits are ML on the same filtered dataset (complete cases; min obs per person-day).
+- Best structure chosen by AIC among converged candidates.

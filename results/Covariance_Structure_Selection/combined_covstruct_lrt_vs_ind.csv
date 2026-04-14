@@ -1,0 +1,13 @@
+"model_label";"random_structure";"compare";"LRT";"df";"p"
+"M1_self_esteem";"id";"CS vs Independent";784,737399387654;1;1,12322060820188e-172
+"M1_self_esteem";"id";"CAR1 vs Independent";1440,23917165113;1;3,78843025445856e-315
+"M1_valence";"id";"CS vs Independent";780,169093231321;1;1,10592258004895e-171
+"M1_valence";"id";"CAR1 vs Independent";1736,55089925436;1;0
+"M1_calmness";"id";"CS vs Independent";546,180163692479;1;8,53031266624423e-121
+"M1_calmness";"id";"CAR1 vs Independent";1365,48188697608;1;6,65817631382042e-299
+"M2_self_esteem";"id";"CS vs Independent";755,46972873772;1;2,59472498238199e-166
+"M2_self_esteem";"id";"CAR1 vs Independent";1375,7069872623;1;3,99379097720955e-301
+"M2_valence";"id";"CS vs Independent";727,23775900375;1;3,57136159060189e-160
+"M2_valence";"id";"CAR1 vs Independent";1601,48772104907;1;0
+"M2_calmness";"id";"CS vs Independent";500,015955608047;1;9,42971739064406e-111
+"M2_calmness";"id";"CAR1 vs Independent";1304,38288117739;1;1,26113450896026e-285

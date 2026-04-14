@@ -2,21 +2,18 @@
 # Inter-rater Reliability Analyses 
 # Fleiss' kappa, Krippendorff's alpha,bootstrap CIs, and pairwise Cohen's kappa
 #
-# Manuscript: Differential Reactivity of Affect and Self-Esteem in Borderline Personality Disorder to Daily Events: 
-#.            Contextual Insights from Large Language Models in Ambulatory Assessment
-#
 # Notes
 # - Expects CSVs with semicolon separators and UTF-8 encoding.
 # - Saves outputs
 # - Bootstrap CI uses percentile intervals.
 # - Seed for bootstrap is fixed at 123.
+# 
+# Manuscript: Differential Reactivity of Affect and Self-Esteem in Borderline Personality Disorder to Daily Events: 
+#             Contextual Insights from Large Language Models in Ambulatory Assessment
 #
 # Author: David Levi Tekampe
 # University of Luxembourg
 
-
-# --------------------- config ---------------------
-# packages
 install_and_load_package <- function(package_name) {
   if (!requireNamespace(package_name, quietly = TRUE)) {
     message(sprintf("Installing package: %s", package_name))
@@ -36,25 +33,25 @@ install_and_load_package <- function(package_name) {
 required_packages <- c("irr", "psych", "raters", "irrCAC", "boot")
 invisible(lapply(required_packages, install_and_load_package))
 
-# ----------- loading and pre-processing -----------
-krippendorff_alpha_file_path <- "<path to krippendorffs alpha CSV input file>"
-fleiss_kappa_file_path      <- "<path to fleiss kappa CSV input file>"
 
-fleiss_kappa_txt_path       <- "<path to fleiss kappa results TXT output file>"
-fleiss_kappa_ci_txt_path    <- "<path to fleiss kappa ci results TXT output file>"
-bootstrap_ci_txt_path       <- "<path to bootstrap fleiss kappa ci results TXT output file>"
-kripp_alpha_txt_path        <- "<path to krippendorffs alpha results TXT output file>"
+krippendorff_alpha_file_path <- "<path to results folder>/rating_krippendorffsalpha.csv"
+fleiss_kappa_file_path      <- "<path to results folder>/reshaped_for_fleiss_kappa.csv"
+
+fleiss_kappa_txt_path       <- "<path to results folder>/fleiss_kappa_results.txt"
+fleiss_kappa_ci_txt_path    <- "<path to results folder>/fleiss_kappa_ci_results.txt"
+bootstrap_ci_txt_path       <- "<path to results folder>/bootstrap_fleiss_kappa_ci_results.txt"
+kripp_alpha_txt_path        <- "krippendorff_alpha_results.txt"
+
 
 fleiss_data <- read.csv(fleiss_kappa_file_path, sep = ";", encoding = "UTF-8")
 
-# structure check
 message("Fleiss' kappa input preview and structure:")
 print(utils::head(fleiss_data))
 str(fleiss_data)
 
 krippendorff_data <- read.csv(krippendorff_alpha_file_path, sep = ";", encoding = "UTF-8")
 
-# first column is an ID/index: excluded
+
 fleiss_ratings_only <- fleiss_data[, -1]
 
 fleiss_kappa_res <- irr::kappam.fleiss(fleiss_ratings_only, detail = TRUE)
@@ -63,8 +60,6 @@ print(fleiss_kappa_res)
 writeLines(capture.output(print(fleiss_kappa_res)), fleiss_kappa_txt_path)
 
 
-# ----------- Fleiss' kappa with CI (irrCAC::fleiss.kappa.raw) -----------
-# using raw ratings; 95% CI; unweighted
 fleiss_kappa_result <- irrCAC::fleiss.kappa.raw(
   fleiss_ratings_only,
   weights = "unweighted",
@@ -85,8 +80,6 @@ fleiss_kappa_ci_output <- capture.output({
 writeLines(fleiss_kappa_ci_output, fleiss_kappa_ci_txt_path)
 
 
-# ----------- Krippendorff's alpha (irr::kripp.alpha) -----------
-# kripp.alpha expects raters in rows—transpose accordingly
 krippendorff_matrix <- t(as.matrix(krippendorff_data))
 kripp_alpha_res     <- irr::kripp.alpha(krippendorff_matrix)
 
@@ -94,16 +87,14 @@ print(kripp_alpha_res)
 writeLines(capture.output(print(kripp_alpha_res)), kripp_alpha_txt_path)
 
 
-# ----------- bootstrap CI for Fleiss' kappa (boot::boot, boot::boot.ci) -----------
 bootstrap_fleiss_kappa <- function(data, indices) {
   resampled <- data[indices, , drop = FALSE]
   irr::kappam.fleiss(resampled)$value
 }
 
-# dropping id columns
 fleiss_data_matrix <- as.matrix(fleiss_ratings_only)
 
-set.seed(123)
+set.seed(123)  
 boot_res <- boot::boot(data = fleiss_data_matrix, statistic = bootstrap_fleiss_kappa, R = 1000)
 print(boot_res)
 
@@ -117,7 +108,6 @@ bootstrap_ci_output <- capture.output({
 writeLines(bootstrap_ci_output, bootstrap_ci_txt_path)
 
 
-# ----------- pairwise Cohen's kappa (irr::kappa2) -----------
 if (all(c("Rater_LLM", "Rater_A", "Rater_D", "Rater_P") %in% names(fleiss_data))) {
   fleiss_data$Rater_LLM <- as.factor(fleiss_data$Rater_LLM)
   fleiss_data$Rater_A   <- as.factor(fleiss_data$Rater_A)
@@ -137,8 +127,6 @@ calculate_pairwise_kappa <- function(data) {
   kappa_mat
 }
 
-# dropping id columns
-pairwise_kappa_results <- calculate_pairwise_kappa(fleiss_data[, -1])
-
+pairwise_kappa_results <- calculate_pairwise_kappa(fleiss_data[, -1])  
 print(pairwise_kappa_results)
 

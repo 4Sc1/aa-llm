@@ -6,22 +6,19 @@
 # - Regex: EMAIL, PHONE, URL, HANDLE (@user), IBAN
 # 
 # Input columns (scanned if present):
-#   - event_original (DE)
+#   - event_original          (DE)
+#   - event_corrected_de      (DE)
+#   - event_en                (EN)
 # 
 # Outputs (UTF-8, ';'):
 #   - suspect_entities.csv : rows containing any PII with per-column matches
 #   - pii_summary.csv      : dataset-level counts per PII type
 # 
-# Dependencies:
-#   pip install spacy pandas tqdm
-#   python -m spacy download de_core_news_lg
-#   python -m spacy download en_core_web_lg
-# 
 # Manuscript: Differential Reactivity of Affect and Self-Esteem in Borderline Personality Disorder to Daily Events: 
 #             Contextual Insights from Large Language Models in Ambulatory Assessment
-#
+#              
 # Author: David Levi Tekampe
-# Copyright: University of Luxembourg (2023)
+# University of Luxembourg
 
 import re
 import json
@@ -32,22 +29,24 @@ import pandas as pd
 from tqdm import tqdm
 import spacy
 
-# --------------------- config ---------------------
-CSV_PATH    = "<path to input CSV file>"
-OUTPUT_PATH = "<path to suspect entries output CSV file>"
-SUMMARY_OUT = "<path to summary output file>"
+# --------------------- CONFIG ---------------------
+CSV_PATH    = "/Users/davidtekampe/Library/Mobile Documents/com~apple~CloudDocs/PhD/data/BPD/dataset_01_r_na.csv"
+OUTPUT_PATH = "/Users/davidtekampe/Library/Mobile Documents/com~apple~CloudDocs/PhD/data/BPD/suspect_entities.csv"
+SUMMARY_OUT = "/Users/davidtekampe/Library/Mobile Documents/com~apple~CloudDocs/PhD/data/BPD/pii_summary.csv"
 SEP         = ";"
 ENCODING    = "utf-8"
 
-# columns to scan and language
+# Columns to scan (column_name, language)
 COLUMNS = [
-    ("event_original", "de"),
+    ("event_original",     "de"),
+    ("event_corrected_de", "de"),
+    ("event_en",           "en"),
 ]
 
-# NER labels of interest
+# NER labels of interest (broad, conservative)
 NER_LABELS = {"PERSON", "GPE", "LOC", "ORG", "NORP", "DATE", "TIME"}
 
-# --------------------- models ---------------------
+# --------------------- MODELS ---------------------
 try:
     nlp_de = spacy.load("de_core_news_lg")
 except OSError as e:
@@ -57,23 +56,25 @@ try:
 except OSError as e:
     raise OSError("Missing spaCy model 'en_core_web_lg'. Install with:\n  python -m spacy download en_core_web_lg") from e
 
-# --------------------- regexes ---------------------
+# --------------------- REGEXES ---------------------
 EMAIL_RE  = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", re.I)
 PHONE_RE  = re.compile(r"(?:(?:\+|00)\d{1,3}[\s\-]?)?(?:\(?\d{2,4}\)?[\s\-]?)?\d{3,4}[\s\-]?\d{3,4}")
 URL_RE    = re.compile(r"(?:https?://\S+|www\.\S+)", re.I)
 HANDLE_RE = re.compile(r"(?<!\w)@\w{3,}")  # @username, 3+ chars
 IBAN_RE   = re.compile(r"\b[A-Z]{2}\d{2}[A-Z0-9]{10,30}\b")
 
-# --------------------- helpers ---------------------
+# --------------------- HELPERS ---------------------
 def read_semicolon_csv(path: str, sep: str = ";", encoding: str = "utf-8") -> pd.DataFrame:
+    """Robust reader: prefer C engine (fast), fallback without low_memory for Python engine if needed."""
     try:
         return pd.read_csv(path, sep=sep, encoding=encoding, engine="c", low_memory=False)
     except TypeError:
         return pd.read_csv(path, sep=sep, encoding=encoding, engine="c")
     except Exception:
-        return pd.read_csv(path, sep=sep, encoding=encoding, engine="python")
+        return pd.read_csv(path, sep=sep, encoding=encoding, engine="python")  # no low_memory here
 
 def _regex_hits(text: str) -> dict[str, list[str]]:
+    """Regex-based PII hits."""
     if not isinstance(text, str) or not text.strip():
         return {k: [] for k in ("EMAIL","PHONE","URL","HANDLE","IBAN")}
     hits = {
@@ -83,7 +84,7 @@ def _regex_hits(text: str) -> dict[str, list[str]]:
         "HANDLE": HANDLE_RE.findall(text),
         "IBAN":   IBAN_RE.findall(text),
     }
-
+    # de-duplicate while preserving order
     for k, vals in hits.items():
         seen, uniq = set(), []
         for v in vals:
@@ -93,6 +94,7 @@ def _regex_hits(text: str) -> dict[str, list[str]]:
     return hits
 
 def _ner_hits(text: str, lang: str) -> dict[str, list[str]]:
+    """NER-based PII hits with spaCy."""
     out = {lab: [] for lab in NER_LABELS}
     if not isinstance(text, str) or not text.strip():
         return out
@@ -104,6 +106,7 @@ def _ner_hits(text: str, lang: str) -> dict[str, list[str]]:
             buckets[ent.label_].append(ent.text)
     for lab in NER_LABELS:
         if lab in buckets:
+            # de-duplicate
             seen, uniq = set(), []
             for v in buckets[lab]:
                 if v not in seen:
@@ -112,13 +115,14 @@ def _ner_hits(text: str, lang: str) -> dict[str, list[str]]:
     return out
 
 def scan_column(series: pd.Series, lang: str) -> pd.DataFrame:
+    """Return DataFrame with per-row PII lists (JSON strings) for one column."""
     ner_rows, rx_rows = [], []
     for text in tqdm(series.fillna(""), desc=f"Scanning {lang.upper()}", total=len(series)):
         ner_rows.append(_ner_hits(text, lang))
         rx_rows.append(_regex_hits(text))
     ner_df = pd.DataFrame(ner_rows).add_prefix("NER_")
     rx_df  = pd.DataFrame(rx_rows).add_prefix("RX_")
-
+    # Convert lists to JSON strings for CSV
     for c in ner_df.columns:
         ner_df[c] = ner_df[c].apply(lambda x: json.dumps(x, ensure_ascii=False))
     for c in rx_df.columns:
@@ -132,17 +136,21 @@ def _json_list_len(s: str) -> int:
     except Exception:
         return 0
 
-# --------------------- main ---------------------
+# --------------------- MAIN ---------------------
 def main():
+    # Read dataset
     df = read_semicolon_csv(CSV_PATH, sep=SEP, encoding=ENCODING)
 
+    # Ensure stable row identifier
     if "entry" not in df.columns:
         df["entry"] = range(1, len(df) + 1)
 
+    # Track present columns
     present = [(col, lang) for col, lang in COLUMNS if col in df.columns]
     if not present:
         raise ValueError(f"No expected text columns found. Available: {list(df.columns)}")
 
+    # Scan and attach results
     results = []
     for col, lang in present:
         col_res = scan_column(df[col], lang)
@@ -151,6 +159,7 @@ def main():
 
     out = pd.concat([df] + results, axis=1)
 
+    # Row-level flags per column & global
     for col, _ in present:
         ner_cols = [c for c in out.columns if c.startswith(f"{col}__NER_")]
         rx_cols  = [c for c in out.columns if c.startswith(f"{col}__RX_")]
@@ -159,12 +168,15 @@ def main():
         )
     out["has_any_pii"] = out[[f"{c}__has_pii" for c, _ in present]].any(axis=1)
 
+    # Filter suspects
     suspect = out[out["has_any_pii"]].copy()
 
+    # Save outputs
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     suspect.to_csv(OUTPUT_PATH, index=False, encoding=ENCODING, sep=SEP)
     print(f"Saved suspect entries to: {OUTPUT_PATH} (n={len(suspect)})")
 
+    # Summary counts per type across scanned columns
     summary = Counter()
     for col, _ in present:
         for lab in NER_LABELS:

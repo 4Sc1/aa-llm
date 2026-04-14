@@ -1,0 +1,38 @@
+Covariance structure comparison + sensitivity refit
+Model label:  M1_valence 
+
+Fixed (nlme):
+valence ~ event_category + group
+
+Random structure: id
+Correlation grouping: id/day_ar1 ; time = prompt_in_day
+Min obs per person-day kept: 3
+
+Fit table (sorted by AIC):
+ model_label   structure random_structure      AIC      BIC    logLik n_obs
+  M1_valence        CAR1               id 33207.89 33280.78 -16593.94 10818
+  M1_valence          CS               id 34164.27 34237.16 -17072.13 10818
+  M1_valence Independent               id 34942.44 35008.04 -17462.22 10818
+ cor_param
+        NA
+        NA
+        NA
+
+Best (AIC): CAR1
+Best (BIC): CAR1
+
+Failed to converge / fit:
+ - AR1: Coefficient matrix not invertible
+
+LRTs vs Independent:
+ model_label random_structure             compare       LRT df             p
+  M1_valence               id   CS vs Independent  780.1691  1 1.105923e-171
+  M1_valence               id CAR1 vs Independent 1736.5509  1  0.000000e+00
+
+Fixed-effects comparison (lmer vs nlme best):
+Changed terms (significance and/or sign): 0
+
+Notes:
+- lmer fit is ML with conditionally independent residuals.
+- nlme fits are ML on the same filtered dataset (complete cases; min obs per person-day).
+- Best structure chosen by AIC among converged candidates.

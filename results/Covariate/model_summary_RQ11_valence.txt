@@ -1,0 +1,110 @@
+Model Summary for RQ 11  ( valence ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  34486.3   34704.5  -17213.1   34426.3     10629 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.2659 -0.4893  0.0959  0.5140  4.0962 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.6524   0.8077  
+ Residual             1.3754   1.1728  
+Number of obs: 10659, groups:  id, 260
+
+Fixed effects:
+                                                           Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)                                               5.207e+00  4.402e-01  2.608e+02  11.829  < 2e-16 ***
+event_categoryLeisure and Recreation                      1.204e-01  4.454e-02  1.044e+04   2.704  0.00687 ** 
+event_categorySocial and Personal Relationships          -5.571e-02  4.976e-02  1.047e+04  -1.120  0.26283    
+event_categoryWork and Professional Engagements          -2.816e-01  4.918e-02  1.049e+04  -5.726 1.06e-08 ***
+event_categoryHealth and Well-being                      -7.128e-01  1.338e-01  1.044e+04  -5.326 1.02e-07 ***
+event_categoryIndeterminate                              -7.669e-02  7.456e-02  1.056e+04  -1.029  0.30374    
+groupBPD                                                 -2.262e+00  1.541e-01  2.817e+02 -14.683  < 2e-16 ***
+family_statuscohabiting relationship                     -1.028e-01  1.674e-01  2.585e+02  -0.614  0.53954    
+family_statusmarried                                     -8.775e-04  1.725e-01  2.581e+02  -0.005  0.99595    
+family_statusliving separately                            4.846e-01  4.090e-01  2.588e+02   1.185  0.23712    
+family_statusdivorced                                     4.934e-01  3.160e-01  2.577e+02   1.561  0.11966    
+highest_educationsecondary school                         2.124e-01  4.303e-01  2.602e+02   0.494  0.62206    
+highest_educationintermediate school                     -7.648e-02  4.198e-01  2.597e+02  -0.182  0.85558    
+highest_educationuniversity entrance qualification       -9.595e-02  4.270e-01  2.599e+02  -0.225  0.82238    
+highest_educationothers                                   6.920e-02  7.464e-01  2.682e+02   0.093  0.92620    
+work_statusregistered unemployed                          6.107e-02  2.031e-01  2.599e+02   0.301  0.76390    
+work_statusotherwise unemployed                           3.299e-01  3.452e-01  2.602e+02   0.956  0.34010    
+work_statustraining re-education                         -1.680e-01  1.415e-01  2.596e+02  -1.187  0.23636    
+work_statusdisability pension                            -8.036e-01  2.995e-01  2.600e+02  -2.683  0.00776 ** 
+work_statusill                                           -1.583e-01  2.495e-01  2.595e+02  -0.634  0.52637    
+work_statushousewife                                     -1.998e-01  3.408e-01  2.589e+02  -0.586  0.55815    
+work_statussheltered employed                            -1.733e-01  3.394e-01  2.614e+02  -0.511  0.61005    
+work_statusothers                                         6.073e-03  3.031e-01  2.574e+02   0.020  0.98403    
+event_categoryLeisure and Recreation:groupBPD             1.006e-01  6.716e-02  1.046e+04   1.497  0.13431    
+event_categorySocial and Personal Relationships:groupBPD -9.460e-02  6.768e-02  1.048e+04  -1.398  0.16218    
+event_categoryWork and Professional Engagements:groupBPD  1.691e-01  9.053e-02  1.049e+04   1.868  0.06185 .  
+event_categoryHealth and Well-being:groupBPD             -1.525e-01  1.474e-01  1.045e+04  -1.034  0.30094    
+event_categoryIndeterminate:groupBPD                     -1.781e-02  9.901e-02  1.060e+04  -0.180  0.85728    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+APA Style Table:
+                                                                                                                     Effect       b     SE        t
+(Intercept)                                                                                                       Intercept  5.2066 0.4402  11.8289
+event_categoryLeisure and Recreation                                                   Event categoryLeisure and Recreation  0.1204 0.0445   2.7036
+event_categorySocial and Personal Relationships                             Event categorySocial and Personal Relationships -0.0557 0.0498  -1.1198
+event_categoryWork and Professional Engagements                             Event categoryWork and Professional Engagements -0.2816 0.0492  -5.7261
+event_categoryHealth and Well-being                                                     Event categoryHealth and Well-being -0.7128 0.1338  -5.3265
+event_categoryIndeterminate                                                                     Event categoryIndeterminate -0.0767 0.0746  -1.0285
+groupBPD                                                                                                           GroupBPD -2.2624 0.1541 -14.6829
+family_statuscohabiting relationship                                                   Family statuscohabiting relationship -0.1028 0.1674  -0.6143
+family_statusmarried                                                                                   Family statusmarried -0.0009 0.1725  -0.0051
+family_statusliving separately                                                               Family statusliving separately  0.4846 0.4090   1.1850
+family_statusdivorced                                                                                 Family statusdivorced  0.4934 0.3160   1.5614
+highest_educationsecondary school                                                         Highest educationsecondary school  0.2124 0.4303   0.4935
+highest_educationintermediate school                                                   Highest educationintermediate school -0.0765 0.4198  -0.1822
+highest_educationuniversity entrance qualification                       Highest educationuniversity entrance qualification -0.0960 0.4270  -0.2247
+highest_educationothers                                                                             Highest educationothers  0.0692 0.7464   0.0927
+work_statusregistered unemployed                                                           Work statusregistered unemployed  0.0611 0.2031   0.3007
+work_statusotherwise unemployed                                                             Work statusotherwise unemployed  0.3299 0.3452   0.9557
+work_statustraining re-education                                                           Work statustraining re-education -0.1680 0.1415  -1.1869
+work_statusdisability pension                                                                 Work statusdisability pension -0.8036 0.2995  -2.6831
+work_statusill                                                                                               Work statusill -0.1583 0.2495  -0.6344
+work_statushousewife                                                                                   Work statushousewife -0.1998 0.3408  -0.5864
+work_statussheltered employed                                                                 Work statussheltered employed -0.1733 0.3394  -0.5106
+work_statusothers                                                                                         Work statusothers  0.0061 0.3031   0.0200
+event_categoryLeisure and Recreation:groupBPD                       Event categoryLeisure and Recreation $\\times$ GroupBPD  0.1006 0.0672   1.4974
+event_categorySocial and Personal Relationships:groupBPD Event categorySocial and Personal Relationships $\\times$ GroupBPD -0.0946 0.0677  -1.3979
+event_categoryWork and Professional Engagements:groupBPD Event categoryWork and Professional Engagements $\\times$ GroupBPD  0.1691 0.0905   1.8676
+event_categoryHealth and Well-being:groupBPD                         Event categoryHealth and Well-being $\\times$ GroupBPD -0.1525 0.1474  -1.0345
+event_categoryIndeterminate:groupBPD                                         Event categoryIndeterminate $\\times$ GroupBPD -0.0178 0.0990  -0.1798
+                                                                  df      p
+(Intercept)                                                 260.7723 < .001
+event_categoryLeisure and Recreation                     10,440.9288   .007
+event_categorySocial and Personal Relationships          10,472.1120   .263
+event_categoryWork and Professional Engagements          10,488.3164 < .001
+event_categoryHealth and Well-being                      10,436.8798 < .001
+event_categoryIndeterminate                              10,562.4090   .304
+groupBPD                                                    281.7049 < .001
+family_statuscohabiting relationship                        258.5493   .540
+family_statusmarried                                        258.1212   .996
+family_statusliving separately                              258.7620   .237
+family_statusdivorced                                       257.6594   .120
+highest_educationsecondary school                           260.1883   .622
+highest_educationintermediate school                        259.7211   .856
+highest_educationuniversity entrance qualification          259.9001   .822
+highest_educationothers                                     268.2471   .926
+work_statusregistered unemployed                            259.9453   .764
+work_statusotherwise unemployed                             260.1690   .340
+work_statustraining re-education                            259.6126   .236
+work_statusdisability pension                               260.0365   .008
+work_statusill                                              259.5446   .526
+work_statushousewife                                        258.8534   .558
+work_statussheltered employed                               261.4250   .610
+work_statusothers                                           257.3871   .984
+event_categoryLeisure and Recreation:groupBPD            10,456.5961   .134
+event_categorySocial and Personal Relationships:groupBPD 10,475.5825   .162
+event_categoryWork and Professional Engagements:groupBPD 10,488.2327   .062
+event_categoryHealth and Well-being:groupBPD             10,451.8263   .301
+event_categoryIndeterminate:groupBPD                     10,601.2937   .857

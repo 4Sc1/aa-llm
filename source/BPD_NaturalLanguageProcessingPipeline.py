@@ -1,33 +1,34 @@
 
-# Bilingual (EN/DE) preprocessing and n-gram extraction
-# 
-# Pipeline (translation omitted):
-# 1) Spelling/grammar correction (LanguageTool; en-GB, de-DE)
-# 2) Contraction expansion (BEFORE punctuation filtering)
-# 3) Lowercasing
-# 4) Tokenisation + Lemmatization (spaCy: en_core_web_lg, de_core_news_lg)
-# 5) Stop-word removal (spaCy)
-# 6) POS filter: keep only NOUN, VERB, ADJ
-# 7) N-gram extraction (bigrams/trigrams) from lemma sequences
-# 8) Aggregate and export: rank by #unique entries containing the n-gram (old-script behaviour),
-#    also include total occurrence counts for transparency.
-# 
-# Outputs (UTF-8, ';') under OUTPUT_DIR:
-#   - preprocessed_events.csv
-#   - ngrams_top1000_bigrams_en.csv
-#   - ngrams_top1000_trigrams_en.csv
-#   - ngrams_top1000_bigrams_de.csv
-#   - ngrams_top1000_trigrams_de.csv
-#   - ngrams_top1000_bigrams_combined.csv
-#   - ngrams_top1000_trigrams_combined.csv
-# 
-# Dependencies:
-#   pip install spacy language-tool-python contractions pandas tqdm
-#   python -m spacy download en_core_web_lg
-#   python -m spacy download de_core_news_lg
+#Bilingual (EN/DE) preprocessing and n-gram extraction
 #
+#Outputs (UTF-8, ';') under OUTPUT_DIR:
+#  - preprocessed_events.csv
+#  - ngrams_top1000_bigrams_en.csv
+#  - ngrams_top1000_trigrams_en.csv
+#  - ngrams_top1000_bigrams_de.csv
+#  - ngrams_top1000_trigrams_de.csv
+#  - ngrams_top1000_bigrams_combined.csv
+#  - ngrams_top1000_trigrams_combined.csv
+# 
+# Manuscript: Differential Reactivity of Affect and Self-Esteem in Borderline Personality Disorder to Daily Events: 
+#             Contextual Insights from Large Language Models in Ambulatory Assessment
+#              
 # Author: David Levi Tekampe
 # University of Luxembourg
+
+INPUT_CSV = "<path to input-csv file>"
+OUTPUT_DIR = "<path to output directory>"
+CSV_DELIMITER = ";"
+ENCODING = "utf-8"
+
+COL_EN = "event_en"
+COL_DE = "event_corrected_de"
+
+ENABLE_GRAMMAR = True
+
+TOP_K = 1000
+BATCH_SIZE = 1000
+ALLOWED_POS = {"NOUN", "VERB", "ADJ"}
 
 import os
 import re
@@ -39,24 +40,6 @@ from tqdm import tqdm
 import spacy
 import contractions
 
-# --------------------- config ---------------------
-INPUT_CSV = "<path to input CSV file>"
-OUTPUT_DIR = "<path to output directory>"
-CSV_DELIMITER = ";"
-ENCODING = "utf-8"
-
-# column mapping
-COL_EN = "event_en"
-COL_DE = "event_corrected_de"
-
-# toggle language_tool
-ENABLE_GRAMMAR = True
-
-TOP_K = 1000
-BATCH_SIZE = 1000
-ALLOWED_POS = {"NOUN", "VERB", "ADJ"}
-
-# spaCy models
 try:
     nlp_en = spacy.load("en_core_web_lg")
 except OSError as e:
@@ -73,7 +56,6 @@ except OSError as e:
         "python -m spacy download de_core_news_lg"
     ) from e
 
-# language_tool (optional)
 tool_en = tool_de = None
 if ENABLE_GRAMMAR:
     try:
@@ -81,9 +63,10 @@ if ENABLE_GRAMMAR:
         tool_en = language_tool_python.LanguageToolPublicAPI("en-GB")
         tool_de = language_tool_python.LanguageToolPublicAPI("de-DE")
     except Exception:
-        tool_en = tool_de = None
+        tool_en = tool_de = None  # fallback gracefully
 
 def grammar_and_spelling(text: str, lang: str) -> str:
+    
     if not isinstance(text, str) or not text.strip():
         return ""
     if not ENABLE_GRAMMAR:
@@ -96,7 +79,6 @@ def grammar_and_spelling(text: str, lang: str) -> str:
     except Exception:
         return text
 
-# contraction expansion
 _DE_CONTRACTIONS = {
     r"\bam\b": "an dem",
     r"\bim\b": "in dem",
@@ -106,8 +88,6 @@ _DE_CONTRACTIONS = {
     r"\bzum\b": "zu dem",
     r"\bzur\b": "zu der",
 }
-
-# --------------------- helpers ---------------------
 def expand_contractions(text: str, lang: str) -> str:
     if not isinstance(text, str) or not text.strip():
         return ""
@@ -125,7 +105,9 @@ def normalise_to_lemmas(text: str, lang: str) -> list[str]:
         return []
 
     txt = grammar_and_spelling(text, lang=lang)
+
     txt = expand_contractions(txt, lang=lang)
+
     txt = txt.lower()
 
     nlp = nlp_en if lang == "en" else nlp_de
@@ -162,7 +144,6 @@ def save_csv(df: pd.DataFrame, name: str):
     df.to_csv(path, index=False, encoding=ENCODING, sep=CSV_DELIMITER)
     print(f"Saved: {path}")
 
-# --------------------- main ---------------------
 def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     df = pd.read_csv(INPUT_CSV, delimiter=CSV_DELIMITER, encoding=ENCODING, low_memory=False)
@@ -193,7 +174,7 @@ def main():
                 continue
             bi = ngrams(toks, 2); tri = ngrams(toks, 3)
             big_c.update(bi); tri_c.update(tri)
-            # unique-entry membership per n-gram
+
             for ng in set(bi): big_entries[ng].add(eid)
             for ng in set(tri): tri_entries[ng].add(eid)
         return big_c, tri_c, big_entries, tri_entries

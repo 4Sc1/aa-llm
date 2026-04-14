@@ -1,0 +1,91 @@
+Model Summary for RQ 2  ( self_esteem ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's
+  method [lmerModLmerTest]
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  36872.4   36959.7  -18424.2   36848.4     10651 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.4488 -0.3326  0.0528  0.3661  5.0162 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 1.848    1.360   
+ Residual             1.689    1.299   
+Number of obs: 10663, groups:  id, 265
+
+Fixed effects:
+                                                  Estimate Std. Error
+(Intercept)                                      8.150e+00  1.575e-01
+event_categoryLeisure and Recreation            -1.058e-01  3.742e-02
+event_categorySocial and Personal Relationships -2.782e-01  3.761e-02
+event_categoryWork and Professional Engagements -1.119e-01  4.513e-02
+event_categoryHealth and Well-being             -4.996e-01  6.235e-02
+event_categoryIndeterminate                     -2.045e-01  5.626e-02
+groupBPD                                        -3.943e+00  1.829e-01
+sentiment_mean                                   7.608e-01  4.398e-01
+sentiment_within                                 2.307e-01  3.529e-02
+groupBPD:sentiment_within                        6.857e-01  4.596e-02
+                                                        df t value Pr(>|t|)    
+(Intercept)                                      2.734e+02  51.742  < 2e-16 ***
+event_categoryLeisure and Recreation             1.042e+04  -2.829  0.00468 ** 
+event_categorySocial and Personal Relationships  1.044e+04  -7.396 1.51e-13 ***
+event_categoryWork and Professional Engagements  1.045e+04  -2.480  0.01315 *  
+event_categoryHealth and Well-being              1.044e+04  -8.012 1.25e-15 ***
+event_categoryIndeterminate                      1.050e+04  -3.635  0.00028 ***
+groupBPD                                         2.653e+02 -21.553  < 2e-16 ***
+sentiment_mean                                   2.710e+02   1.730  0.08479 .  
+sentiment_within                                 1.040e+04   6.538 6.53e-11 ***
+groupBPD:sentiment_within                        1.040e+04  14.921  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) ev_LaR e_SaPR e_WaPE e_HaW- evnt_I grpBPD sntmnt_m sntmnt_w
+evnt_ctgLaR -0.070                                                            
+evnt_ctSaPR -0.067  0.340                                                     
+evnt_ctWaPE -0.080  0.257  0.238                                              
+evnt_ctHaW- -0.054  0.153  0.208  0.149                                       
+evnt_ctgryI -0.063  0.205  0.229  0.171  0.183                                
+groupBPD    -0.735 -0.005 -0.020  0.021 -0.019 -0.009                         
+sentimnt_mn -0.648 -0.010 -0.005  0.011  0.035  0.023  0.379                  
+sntmnt_wthn  0.004 -0.169 -0.156  0.069  0.040  0.026  0.005  0.008           
+grpBPD:snt_ -0.006  0.065  0.083 -0.040  0.134  0.001 -0.005  0.002   -0.737  
+
+APA Style Table:
+                                                                                         Effect
+(Intercept)                                                                           Intercept
+event_categoryLeisure and Recreation                       Event categoryLeisure and Recreation
+event_categorySocial and Personal Relationships Event categorySocial and Personal Relationships
+event_categoryWork and Professional Engagements Event categoryWork and Professional Engagements
+event_categoryHealth and Well-being                         Event categoryHealth and Well-being
+event_categoryIndeterminate                                         Event categoryIndeterminate
+groupBPD                                                                               GroupBPD
+sentiment_mean                                                                   Sentiment mean
+sentiment_within                                                               Sentiment within
+groupBPD:sentiment_within                                   GroupBPD $\\times$ Sentiment within
+                                                      b     SE        t
+(Intercept)                                      8.1501 0.1575  51.7417
+event_categoryLeisure and Recreation            -0.1058 0.0374  -2.8290
+event_categorySocial and Personal Relationships -0.2782 0.0376  -7.3958
+event_categoryWork and Professional Engagements -0.1119 0.0451  -2.4800
+event_categoryHealth and Well-being             -0.4996 0.0623  -8.0124
+event_categoryIndeterminate                     -0.2045 0.0563  -3.6348
+groupBPD                                        -3.9428 0.1829 -21.5532
+sentiment_mean                                   0.7607 0.4398   1.7299
+sentiment_within                                 0.2307 0.0353   6.5380
+groupBPD:sentiment_within                        0.6857 0.0460  14.9211
+                                                         df      p
+(Intercept)                                        273.4040 < .001
+event_categoryLeisure and Recreation            10,424.0103   .005
+event_categorySocial and Personal Relationships 10,437.4935 < .001
+event_categoryWork and Professional Engagements 10,447.4299   .013
+event_categoryHealth and Well-being             10,440.9645 < .001
+event_categoryIndeterminate                     10,502.5582 < .001
+groupBPD                                           265.3472 < .001
+sentiment_mean                                     270.9790   .085
+sentiment_within                                10,399.8536 < .001
+groupBPD:sentiment_within                       10,399.2282 < .001

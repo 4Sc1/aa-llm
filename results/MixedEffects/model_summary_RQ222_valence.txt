@@ -1,0 +1,54 @@
+Model Summary for RQ 222  ( valence ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  17194.5   17265.8   -8586.3   17172.5      4802 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.2762 -0.6301  0.0080  0.6675  3.2824 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.6941   0.8331  
+ Residual             1.9393   1.3926  
+Number of obs: 4813, groups:  id, 121
+
+Fixed effects:
+                                                  Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)                                        4.04321    0.23296  124.10438  17.356  < 2e-16 ***
+event_categoryLeisure and Recreation               0.05791    0.06224 4734.09132   0.930 0.352189    
+event_categorySocial and Personal Relationships   -0.21722    0.05668 4744.04459  -3.833 0.000128 ***
+event_categoryWork and Professional Engagements   -0.06489    0.09439 4755.38217  -0.687 0.491814    
+event_categoryHealth and Well-being               -0.46949    0.07835 4740.85880  -5.992 2.23e-09 ***
+event_categoryIndeterminate                        0.01541    0.08350 4806.99373   0.185 0.853568    
+sentiment_within                                   0.68094    0.03511 4696.88305  19.394  < 2e-16 ***
+BSL_score                                         -0.56460    0.09612  119.70301  -5.874 3.91e-08 ***
+sentiment_mean                                     0.93125    0.32744  128.42801   2.844 0.005185 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) ev_LaR e_SaPR e_WaPE e_HaW- evnt_I sntmnt_w BSL_sc
+evnt_ctgLaR -0.086                                                   
+evnt_ctSaPR -0.099  0.372                                            
+evnt_ctWaPE -0.063  0.223  0.244                                     
+evnt_ctHaW- -0.082  0.218  0.290  0.192                              
+evnt_ctgryI -0.096  0.247  0.289  0.179  0.255                       
+sntmnt_wthn -0.002 -0.142 -0.081  0.038  0.238  0.030                
+BSL_score   -0.925 -0.001 -0.003 -0.001 -0.003  0.012  0.000         
+sentimnt_mn -0.183 -0.022  0.002  0.014  0.073  0.053  0.027    0.076
+
+APA Style Table:
+                                                                                         Effect       b     SE       t         df      p
+(Intercept)                                                                           Intercept  4.0432 0.2330 17.3555   124.1044 < .001
+event_categoryLeisure and Recreation                       Event categoryLeisure and Recreation  0.0579 0.0622  0.9304 4,734.0913   .352
+event_categorySocial and Personal Relationships Event categorySocial and Personal Relationships -0.2172 0.0567 -3.8326 4,744.0446 < .001
+event_categoryWork and Professional Engagements Event categoryWork and Professional Engagements -0.0649 0.0944 -0.6875 4,755.3822   .492
+event_categoryHealth and Well-being                         Event categoryHealth and Well-being -0.4695 0.0784 -5.9919 4,740.8588 < .001
+event_categoryIndeterminate                                         Event categoryIndeterminate  0.0154 0.0835  0.1846 4,806.9937   .854
+sentiment_within                                                               Sentiment within  0.6809 0.0351 19.3939 4,696.8830 < .001
+BSL_score                                                                             BSL score -0.5646 0.0961 -5.8741   119.7030 < .001
+sentiment_mean                                                                   Sentiment mean  0.9312 0.3274  2.8441   128.4280   .005

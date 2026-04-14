@@ -1,0 +1,48 @@
+Model Summary for RQ 111  ( calmness ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  17521.0   17579.5   -8751.5   17503.0      4915 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.5006 -0.6176 -0.0224  0.6685  3.2641 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.647    0.8044  
+ Residual             1.918    1.3848  
+Number of obs: 4924, groups:  id, 121
+
+Fixed effects:
+                                                  Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)                                        4.22047    0.22130  125.71427  19.072  < 2e-16 ***
+event_categoryLeisure and Recreation               0.13973    0.06115 4850.26111   2.285   0.0223 *  
+event_categorySocial and Personal Relationships   -0.28349    0.05600 4856.86086  -5.062 4.30e-07 ***
+event_categoryWork and Professional Engagements   -0.38719    0.09372 4869.89035  -4.132 3.66e-05 ***
+event_categoryHealth and Well-being               -0.76720    0.07508 4880.72033 -10.219  < 2e-16 ***
+event_categoryIndeterminate                       -0.12757    0.07908 4921.63460  -1.613   0.1068    
+BSL_score                                         -0.58073    0.09245  120.75405  -6.282 5.49e-09 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) ev_LaR e_SaPR e_WaPE e_HaW- evnt_I
+evnt_ctgLaR -0.095                                   
+evnt_ctSaPR -0.104  0.366                            
+evnt_ctWaPE -0.064  0.232  0.247                     
+evnt_ctHaW- -0.077  0.265  0.321  0.188              
+evnt_ctgryI -0.090  0.264  0.308  0.187  0.269       
+BSL_score   -0.929  0.001 -0.002 -0.001 -0.006  0.002
+
+APA Style Table:
+                                                                                         Effect       b     SE        t         df      p
+(Intercept)                                                                           Intercept  4.2205 0.2213  19.0716   125.7143 < .001
+event_categoryLeisure and Recreation                       Event categoryLeisure and Recreation  0.1397 0.0611   2.2852 4,850.2611   .022
+event_categorySocial and Personal Relationships Event categorySocial and Personal Relationships -0.2835 0.0560  -5.0621 4,856.8609 < .001
+event_categoryWork and Professional Engagements Event categoryWork and Professional Engagements -0.3872 0.0937  -4.1316 4,869.8903 < .001
+event_categoryHealth and Well-being                         Event categoryHealth and Well-being -0.7672 0.0751 -10.2191 4,880.7203 < .001
+event_categoryIndeterminate                                         Event categoryIndeterminate -0.1276 0.0791  -1.6133 4,921.6346   .107
+BSL_score                                                                             BSL score -0.5807 0.0924  -6.2817   120.7540 < .001

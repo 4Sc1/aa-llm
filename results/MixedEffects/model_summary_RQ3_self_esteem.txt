@@ -1,0 +1,364 @@
+Model Summary for RQ 3  ( self_esteem ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's
+  method [lmerModLmerTest]
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  37930.3   38185.5  -18930.2   37860.3     10802 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.3750 -0.3342  0.0470  0.3723  4.6550 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 1.856    1.362   
+ Residual             1.757    1.326   
+Number of obs: 10837, groups:  id, 265
+
+Fixed effects:
+                                                                 Estimate
+(Intercept)                                                     8.298e+00
+event_subcategoryEntertainment and Media Consumption           -1.425e-01
+event_subcategoryPersonal Care and Hygiene                      1.841e-01
+event_subcategoryCommuting                                     -2.052e-03
+event_subcategoryFamily Dynamics                               -1.128e-01
+event_subcategorySocializing and Leisure                        1.900e-01
+event_subcategoryTravel and Excursions                          3.345e-01
+event_subcategoryCultural and Community Events                  2.633e-01
+event_subcategoryCompanion Animal Care                         -6.289e-02
+event_subcategoryOutdoor and Recreational Activities            2.137e-01
+event_subcategoryRest and Sleep                                -1.666e-01
+event_subcategoryMedical Treatment and Healthcare Interactions -2.976e-01
+event_subcategoryHealthcare Journeys and Visits                -7.078e-01
+event_subcategoryShopping and Errands                           1.087e-02
+event_subcategoryHousehold Chores                               9.779e-02
+event_subcategoryEmotional and Conflict Resolution             -1.416e+00
+event_subcategoryWork-Related Tasks and Projects               -1.094e-01
+event_subcategoryMental Health and Emotional State             -1.710e+00
+event_subcategoryIndeterminate                                 -3.315e-01
+event_subcategoryRomantic Partnerships                         -4.691e-03
+event_subcategoryMood and Emotional Fluctuations               -1.251e+00
+event_subcategoryFriendship Activities                          1.827e-01
+event_subcategoryAcquaintance and Casual Interactions          -1.866e-01
+event_subcategoryEducational and Academic Work                 -2.173e-01
+event_subcategoryProfessional Communication and Meetings       -2.160e-01
+event_subcategoryRelaxation                                     3.511e-01
+event_subcategoryLeisure and Entertainment at Home             -4.345e-03
+event_subcategoryReading and Intellectual Activities           -4.218e-01
+event_subcategoryGames and Hobbies                             -1.432e-01
+event_subcategoryFinancial and Administrative Tasks            -4.870e-01
+event_subcategoryPhysical Health and Symptoms                  -6.859e-01
+event_subcategorySports and Physical Activities                 4.952e-01
+groupBPD                                                       -3.977e+00
+                                                               Std. Error
+(Intercept)                                                     1.247e-01
+event_subcategoryEntertainment and Media Consumption            6.424e-02
+event_subcategoryPersonal Care and Hygiene                      9.376e-02
+event_subcategoryCommuting                                      7.416e-02
+event_subcategoryFamily Dynamics                                6.646e-02
+event_subcategorySocializing and Leisure                        7.877e-02
+event_subcategoryTravel and Excursions                          1.591e-01
+event_subcategoryCultural and Community Events                  1.329e-01
+event_subcategoryCompanion Animal Care                          1.232e-01
+event_subcategoryOutdoor and Recreational Activities            1.035e-01
+event_subcategoryRest and Sleep                                 6.358e-02
+event_subcategoryMedical Treatment and Healthcare Interactions  1.554e-01
+event_subcategoryHealthcare Journeys and Visits                 1.038e-01
+event_subcategoryShopping and Errands                           7.188e-02
+event_subcategoryHousehold Chores                               6.876e-02
+event_subcategoryEmotional and Conflict Resolution              9.262e-02
+event_subcategoryWork-Related Tasks and Projects                6.888e-02
+event_subcategoryMental Health and Emotional State              1.065e-01
+event_subcategoryIndeterminate                                  6.506e-02
+event_subcategoryRomantic Partnerships                          8.804e-02
+event_subcategoryMood and Emotional Fluctuations                1.620e-01
+event_subcategoryFriendship Activities                          7.744e-02
+event_subcategoryAcquaintance and Casual Interactions           1.130e-01
+event_subcategoryEducational and Academic Work                  9.182e-02
+event_subcategoryProfessional Communication and Meetings        9.106e-02
+event_subcategoryRelaxation                                     2.159e-01
+event_subcategoryLeisure and Entertainment at Home              1.052e-01
+event_subcategoryReading and Intellectual Activities            1.228e-01
+event_subcategoryGames and Hobbies                              1.202e-01
+event_subcategoryFinancial and Administrative Tasks             2.244e-01
+event_subcategoryPhysical Health and Symptoms                   1.983e-01
+event_subcategorySports and Physical Activities                 1.445e-01
+groupBPD                                                        1.697e-01
+                                                                       df
+(Intercept)                                                     3.179e+02
+event_subcategoryEntertainment and Media Consumption            1.060e+04
+event_subcategoryPersonal Care and Hygiene                      1.059e+04
+event_subcategoryCommuting                                      1.060e+04
+event_subcategoryFamily Dynamics                                1.062e+04
+event_subcategorySocializing and Leisure                        1.060e+04
+event_subcategoryTravel and Excursions                          1.060e+04
+event_subcategoryCultural and Community Events                  1.060e+04
+event_subcategoryCompanion Animal Care                          1.060e+04
+event_subcategoryOutdoor and Recreational Activities            1.059e+04
+event_subcategoryRest and Sleep                                 1.059e+04
+event_subcategoryMedical Treatment and Healthcare Interactions  1.060e+04
+event_subcategoryHealthcare Journeys and Visits                 1.061e+04
+event_subcategoryShopping and Errands                           1.059e+04
+event_subcategoryHousehold Chores                               1.060e+04
+event_subcategoryEmotional and Conflict Resolution              1.061e+04
+event_subcategoryWork-Related Tasks and Projects                1.062e+04
+event_subcategoryMental Health and Emotional State              1.064e+04
+event_subcategoryIndeterminate                                  1.068e+04
+event_subcategoryRomantic Partnerships                          1.061e+04
+event_subcategoryMood and Emotional Fluctuations                1.062e+04
+event_subcategoryFriendship Activities                          1.060e+04
+event_subcategoryAcquaintance and Casual Interactions           1.060e+04
+event_subcategoryEducational and Academic Work                  1.065e+04
+event_subcategoryProfessional Communication and Meetings        1.060e+04
+event_subcategoryRelaxation                                     1.059e+04
+event_subcategoryLeisure and Entertainment at Home              1.059e+04
+event_subcategoryReading and Intellectual Activities            1.061e+04
+event_subcategoryGames and Hobbies                              1.061e+04
+event_subcategoryFinancial and Administrative Tasks             1.060e+04
+event_subcategoryPhysical Health and Symptoms                   1.059e+04
+event_subcategorySports and Physical Activities                 1.059e+04
+groupBPD                                                        2.663e+02
+                                                               t value Pr(>|t|)
+(Intercept)                                                     66.526  < 2e-16
+event_subcategoryEntertainment and Media Consumption            -2.218 0.026609
+event_subcategoryPersonal Care and Hygiene                       1.964 0.049572
+event_subcategoryCommuting                                      -0.028 0.977922
+event_subcategoryFamily Dynamics                                -1.697 0.089785
+event_subcategorySocializing and Leisure                         2.412 0.015896
+event_subcategoryTravel and Excursions                           2.103 0.035486
+event_subcategoryCultural and Community Events                   1.981 0.047565
+event_subcategoryCompanion Animal Care                          -0.510 0.609734
+event_subcategoryOutdoor and Recreational Activities             2.066 0.038857
+event_subcategoryRest and Sleep                                 -2.621 0.008779
+event_subcategoryMedical Treatment and Healthcare Interactions  -1.915 0.055515
+event_subcategoryHealthcare Journeys and Visits                 -6.818 9.73e-12
+event_subcategoryShopping and Errands                            0.151 0.879841
+event_subcategoryHousehold Chores                                1.422 0.155003
+event_subcategoryEmotional and Conflict Resolution             -15.290  < 2e-16
+event_subcategoryWork-Related Tasks and Projects                -1.589 0.112124
+event_subcategoryMental Health and Emotional State             -16.062  < 2e-16
+event_subcategoryIndeterminate                                  -5.096 3.53e-07
+event_subcategoryRomantic Partnerships                          -0.053 0.957502
+event_subcategoryMood and Emotional Fluctuations                -7.723 1.24e-14
+event_subcategoryFriendship Activities                           2.360 0.018313
+event_subcategoryAcquaintance and Casual Interactions           -1.651 0.098801
+event_subcategoryEducational and Academic Work                  -2.367 0.017963
+event_subcategoryProfessional Communication and Meetings        -2.372 0.017709
+event_subcategoryRelaxation                                      1.626 0.103959
+event_subcategoryLeisure and Entertainment at Home              -0.041 0.967070
+event_subcategoryReading and Intellectual Activities            -3.435 0.000595
+event_subcategoryGames and Hobbies                              -1.191 0.233559
+event_subcategoryFinancial and Administrative Tasks             -2.170 0.030003
+event_subcategoryPhysical Health and Symptoms                   -3.460 0.000543
+event_subcategorySports and Physical Activities                  3.426 0.000614
+groupBPD                                                       -23.437  < 2e-16
+                                                                  
+(Intercept)                                                    ***
+event_subcategoryEntertainment and Media Consumption           *  
+event_subcategoryPersonal Care and Hygiene                     *  
+event_subcategoryCommuting                                        
+event_subcategoryFamily Dynamics                               .  
+event_subcategorySocializing and Leisure                       *  
+event_subcategoryTravel and Excursions                         *  
+event_subcategoryCultural and Community Events                 *  
+event_subcategoryCompanion Animal Care                            
+event_subcategoryOutdoor and Recreational Activities           *  
+event_subcategoryRest and Sleep                                ** 
+event_subcategoryMedical Treatment and Healthcare Interactions .  
+event_subcategoryHealthcare Journeys and Visits                ***
+event_subcategoryShopping and Errands                             
+event_subcategoryHousehold Chores                                 
+event_subcategoryEmotional and Conflict Resolution             ***
+event_subcategoryWork-Related Tasks and Projects                  
+event_subcategoryMental Health and Emotional State             ***
+event_subcategoryIndeterminate                                 ***
+event_subcategoryRomantic Partnerships                            
+event_subcategoryMood and Emotional Fluctuations               ***
+event_subcategoryFriendship Activities                         *  
+event_subcategoryAcquaintance and Casual Interactions          .  
+event_subcategoryEducational and Academic Work                 *  
+event_subcategoryProfessional Communication and Meetings       *  
+event_subcategoryRelaxation                                       
+event_subcategoryLeisure and Entertainment at Home                
+event_subcategoryReading and Intellectual Activities           ***
+event_subcategoryGames and Hobbies                                
+event_subcategoryFinancial and Administrative Tasks            *  
+event_subcategoryPhysical Health and Symptoms                  ***
+event_subcategorySports and Physical Activities                ***
+groupBPD                                                       ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+APA Style Table:
+                                                                                                                       Effect
+(Intercept)                                                                                                         Intercept
+event_subcategoryEntertainment and Media Consumption                     Event subcategoryEntertainment and Media Consumption
+event_subcategoryPersonal Care and Hygiene                                         Event subcategoryPersonal Care and Hygiene
+event_subcategoryCommuting                                                                         Event subcategoryCommuting
+event_subcategoryFamily Dynamics                                                             Event subcategoryFamily Dynamics
+event_subcategorySocializing and Leisure                                             Event subcategorySocializing and Leisure
+event_subcategoryTravel and Excursions                                                 Event subcategoryTravel and Excursions
+event_subcategoryCultural and Community Events                                 Event subcategoryCultural and Community Events
+event_subcategoryCompanion Animal Care                                                 Event subcategoryCompanion Animal Care
+event_subcategoryOutdoor and Recreational Activities                     Event subcategoryOutdoor and Recreational Activities
+event_subcategoryRest and Sleep                                                               Event subcategoryRest and Sleep
+event_subcategoryMedical Treatment and Healthcare Interactions Event subcategoryMedical Treatment and Healthcare Interactions
+event_subcategoryHealthcare Journeys and Visits                               Event subcategoryHealthcare Journeys and Visits
+event_subcategoryShopping and Errands                                                   Event subcategoryShopping and Errands
+event_subcategoryHousehold Chores                                                           Event subcategoryHousehold Chores
+event_subcategoryEmotional and Conflict Resolution                         Event subcategoryEmotional and Conflict Resolution
+event_subcategoryWork-Related Tasks and Projects                             Event subcategoryWork-Related Tasks and Projects
+event_subcategoryMental Health and Emotional State                         Event subcategoryMental Health and Emotional State
+event_subcategoryIndeterminate                                                                 Event subcategoryIndeterminate
+event_subcategoryRomantic Partnerships                                                 Event subcategoryRomantic Partnerships
+event_subcategoryMood and Emotional Fluctuations                             Event subcategoryMood and Emotional Fluctuations
+event_subcategoryFriendship Activities                                                 Event subcategoryFriendship Activities
+event_subcategoryAcquaintance and Casual Interactions                   Event subcategoryAcquaintance and Casual Interactions
+event_subcategoryEducational and Academic Work                                 Event subcategoryEducational and Academic Work
+event_subcategoryProfessional Communication and Meetings             Event subcategoryProfessional Communication and Meetings
+event_subcategoryRelaxation                                                                       Event subcategoryRelaxation
+event_subcategoryLeisure and Entertainment at Home                         Event subcategoryLeisure and Entertainment at Home
+event_subcategoryReading and Intellectual Activities                     Event subcategoryReading and Intellectual Activities
+event_subcategoryGames and Hobbies                                                         Event subcategoryGames and Hobbies
+event_subcategoryFinancial and Administrative Tasks                       Event subcategoryFinancial and Administrative Tasks
+event_subcategoryPhysical Health and Symptoms                                   Event subcategoryPhysical Health and Symptoms
+event_subcategorySports and Physical Activities                               Event subcategorySports and Physical Activities
+groupBPD                                                                                                             GroupBPD
+                                                                     b     SE
+(Intercept)                                                     8.2979 0.1247
+event_subcategoryEntertainment and Media Consumption           -0.1425 0.0642
+event_subcategoryPersonal Care and Hygiene                      0.1841 0.0938
+event_subcategoryCommuting                                     -0.0021 0.0742
+event_subcategoryFamily Dynamics                               -0.1128 0.0665
+event_subcategorySocializing and Leisure                        0.1900 0.0788
+event_subcategoryTravel and Excursions                          0.3345 0.1591
+event_subcategoryCultural and Community Events                  0.2633 0.1329
+event_subcategoryCompanion Animal Care                         -0.0629 0.1232
+event_subcategoryOutdoor and Recreational Activities            0.2137 0.1035
+event_subcategoryRest and Sleep                                -0.1667 0.0636
+event_subcategoryMedical Treatment and Healthcare Interactions -0.2976 0.1554
+event_subcategoryHealthcare Journeys and Visits                -0.7078 0.1038
+event_subcategoryShopping and Errands                           0.0109 0.0719
+event_subcategoryHousehold Chores                               0.0978 0.0688
+event_subcategoryEmotional and Conflict Resolution             -1.4162 0.0926
+event_subcategoryWork-Related Tasks and Projects               -0.1094 0.0689
+event_subcategoryMental Health and Emotional State             -1.7101 0.1065
+event_subcategoryIndeterminate                                 -0.3315 0.0651
+event_subcategoryRomantic Partnerships                         -0.0047 0.0880
+event_subcategoryMood and Emotional Fluctuations               -1.2512 0.1620
+event_subcategoryFriendship Activities                          0.1827 0.0774
+event_subcategoryAcquaintance and Casual Interactions          -0.1866 0.1130
+event_subcategoryEducational and Academic Work                 -0.2173 0.0918
+event_subcategoryProfessional Communication and Meetings       -0.2160 0.0911
+event_subcategoryRelaxation                                     0.3511 0.2159
+event_subcategoryLeisure and Entertainment at Home             -0.0043 0.1052
+event_subcategoryReading and Intellectual Activities           -0.4218 0.1228
+event_subcategoryGames and Hobbies                             -0.1432 0.1202
+event_subcategoryFinancial and Administrative Tasks            -0.4870 0.2244
+event_subcategoryPhysical Health and Symptoms                  -0.6859 0.1983
+event_subcategorySports and Physical Activities                 0.4952 0.1445
+groupBPD                                                       -3.9772 0.1697
+                                                                      t
+(Intercept)                                                     66.5258
+event_subcategoryEntertainment and Media Consumption            -2.2175
+event_subcategoryPersonal Care and Hygiene                       1.9639
+event_subcategoryCommuting                                      -0.0277
+event_subcategoryFamily Dynamics                                -1.6967
+event_subcategorySocializing and Leisure                         2.4117
+event_subcategoryTravel and Excursions                           2.1030
+event_subcategoryCultural and Community Events                   1.9815
+event_subcategoryCompanion Animal Care                          -0.5105
+event_subcategoryOutdoor and Recreational Activities             2.0660
+event_subcategoryRest and Sleep                                 -2.6210
+event_subcategoryMedical Treatment and Healthcare Interactions  -1.9150
+event_subcategoryHealthcare Journeys and Visits                 -6.8181
+event_subcategoryShopping and Errands                            0.1512
+event_subcategoryHousehold Chores                                1.4222
+event_subcategoryEmotional and Conflict Resolution             -15.2896
+event_subcategoryWork-Related Tasks and Projects                -1.5888
+event_subcategoryMental Health and Emotional State             -16.0617
+event_subcategoryIndeterminate                                  -5.0962
+event_subcategoryRomantic Partnerships                          -0.0533
+event_subcategoryMood and Emotional Fluctuations                -7.7231
+event_subcategoryFriendship Activities                           2.3596
+event_subcategoryAcquaintance and Casual Interactions           -1.6508
+event_subcategoryEducational and Academic Work                  -2.3668
+event_subcategoryProfessional Communication and Meetings        -2.3720
+event_subcategoryRelaxation                                      1.6261
+event_subcategoryLeisure and Entertainment at Home              -0.0413
+event_subcategoryReading and Intellectual Activities            -3.4349
+event_subcategoryGames and Hobbies                              -1.1913
+event_subcategoryFinancial and Administrative Tasks             -2.1703
+event_subcategoryPhysical Health and Symptoms                   -3.4596
+event_subcategorySports and Physical Activities                  3.4264
+groupBPD                                                       -23.4370
+                                                                        df
+(Intercept)                                                       317.8894
+event_subcategoryEntertainment and Media Consumption           10,604.3507
+event_subcategoryPersonal Care and Hygiene                     10,585.6939
+event_subcategoryCommuting                                     10,601.2812
+event_subcategoryFamily Dynamics                               10,616.8514
+event_subcategorySocializing and Leisure                       10,598.9251
+event_subcategoryTravel and Excursions                         10,598.0648
+event_subcategoryCultural and Community Events                 10,598.2873
+event_subcategoryCompanion Animal Care                         10,604.8062
+event_subcategoryOutdoor and Recreational Activities           10,593.4065
+event_subcategoryRest and Sleep                                10,593.5404
+event_subcategoryMedical Treatment and Healthcare Interactions 10,597.3089
+event_subcategoryHealthcare Journeys and Visits                10,607.8694
+event_subcategoryShopping and Errands                          10,590.3609
+event_subcategoryHousehold Chores                              10,595.6380
+event_subcategoryEmotional and Conflict Resolution             10,608.9777
+event_subcategoryWork-Related Tasks and Projects               10,622.4151
+event_subcategoryMental Health and Emotional State             10,635.8534
+event_subcategoryIndeterminate                                 10,682.9967
+event_subcategoryRomantic Partnerships                         10,614.3124
+event_subcategoryMood and Emotional Fluctuations               10,617.2990
+event_subcategoryFriendship Activities                         10,602.5773
+event_subcategoryAcquaintance and Casual Interactions          10,599.8346
+event_subcategoryEducational and Academic Work                 10,650.4803
+event_subcategoryProfessional Communication and Meetings       10,598.1801
+event_subcategoryRelaxation                                    10,594.4385
+event_subcategoryLeisure and Entertainment at Home             10,591.2371
+event_subcategoryReading and Intellectual Activities           10,605.0967
+event_subcategoryGames and Hobbies                             10,608.8564
+event_subcategoryFinancial and Administrative Tasks            10,596.3355
+event_subcategoryPhysical Health and Symptoms                  10,594.4523
+event_subcategorySports and Physical Activities                10,592.8368
+groupBPD                                                          266.2665
+                                                                    p
+(Intercept)                                                    < .001
+event_subcategoryEntertainment and Media Consumption             .027
+event_subcategoryPersonal Care and Hygiene                       .050
+event_subcategoryCommuting                                       .978
+event_subcategoryFamily Dynamics                                 .090
+event_subcategorySocializing and Leisure                         .016
+event_subcategoryTravel and Excursions                           .035
+event_subcategoryCultural and Community Events                   .048
+event_subcategoryCompanion Animal Care                           .610
+event_subcategoryOutdoor and Recreational Activities             .039
+event_subcategoryRest and Sleep                                  .009
+event_subcategoryMedical Treatment and Healthcare Interactions   .056
+event_subcategoryHealthcare Journeys and Visits                < .001
+event_subcategoryShopping and Errands                            .880
+event_subcategoryHousehold Chores                                .155
+event_subcategoryEmotional and Conflict Resolution             < .001
+event_subcategoryWork-Related Tasks and Projects                 .112
+event_subcategoryMental Health and Emotional State             < .001
+event_subcategoryIndeterminate                                 < .001
+event_subcategoryRomantic Partnerships                           .958
+event_subcategoryMood and Emotional Fluctuations               < .001
+event_subcategoryFriendship Activities                           .018
+event_subcategoryAcquaintance and Casual Interactions            .099
+event_subcategoryEducational and Academic Work                   .018
+event_subcategoryProfessional Communication and Meetings         .018
+event_subcategoryRelaxation                                      .104
+event_subcategoryLeisure and Entertainment at Home               .967
+event_subcategoryReading and Intellectual Activities           < .001
+event_subcategoryGames and Hobbies                               .234
+event_subcategoryFinancial and Administrative Tasks              .030
+event_subcategoryPhysical Health and Symptoms                  < .001
+event_subcategorySports and Physical Activities                < .001
+groupBPD                                                       < .001

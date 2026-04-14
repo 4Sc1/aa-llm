@@ -1,0 +1,73 @@
+Model Summary for RQ 1  ( valence ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's
+  method [lmerModLmerTest]
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  35000.8   35066.4  -17491.4   34982.8     10832 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.2802 -0.4910  0.0962  0.5137  4.1209 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.7029   0.8384  
+ Residual             1.3688   1.1700  
+Number of obs: 10841, groups:  id, 265
+
+Fixed effects:
+                                                  Estimate Std. Error
+(Intercept)                                      5.041e+00  7.561e-02
+event_categoryLeisure and Recreation             1.623e-01  3.299e-02
+event_categorySocial and Personal Relationships -1.087e-01  3.329e-02
+event_categoryWork and Professional Engagements -2.258e-01  4.041e-02
+event_categoryHealth and Well-being             -8.443e-01  5.404e-02
+event_categoryIndeterminate                     -8.834e-02  4.832e-02
+groupBPD                                        -2.191e+00  1.058e-01
+                                                        df t value Pr(>|t|)    
+(Intercept)                                      2.842e+02  66.662  < 2e-16 ***
+event_categoryLeisure and Recreation             1.063e+04   4.919 8.84e-07 ***
+event_categorySocial and Personal Relationships  1.065e+04  -3.265   0.0011 ** 
+event_categoryWork and Professional Engagements  1.068e+04  -5.587 2.37e-08 ***
+event_categoryHealth and Well-being              1.069e+04 -15.625  < 2e-16 ***
+event_categoryIndeterminate                      1.080e+04  -1.828   0.0675 .  
+groupBPD                                         2.662e+02 -20.714  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) ev_LaR e_SaPR e_WaPE e_HaW- evnt_I
+evnt_ctgLaR -0.142                                   
+evnt_ctSaPR -0.129  0.320                            
+evnt_ctWaPE -0.138  0.276  0.254                     
+evnt_ctHaW- -0.064  0.192  0.236  0.147              
+evnt_ctgryI -0.095  0.224  0.250  0.176  0.191       
+groupBPD    -0.686 -0.002 -0.028  0.026 -0.048 -0.031
+
+APA Style Table:
+                                                                                         Effect
+(Intercept)                                                                           Intercept
+event_categoryLeisure and Recreation                       Event categoryLeisure and Recreation
+event_categorySocial and Personal Relationships Event categorySocial and Personal Relationships
+event_categoryWork and Professional Engagements Event categoryWork and Professional Engagements
+event_categoryHealth and Well-being                         Event categoryHealth and Well-being
+event_categoryIndeterminate                                         Event categoryIndeterminate
+groupBPD                                                                               GroupBPD
+                                                      b     SE        t
+(Intercept)                                      5.0406 0.0756  66.6616
+event_categoryLeisure and Recreation             0.1623 0.0330   4.9187
+event_categorySocial and Personal Relationships -0.1087 0.0333  -3.2651
+event_categoryWork and Professional Engagements -0.2258 0.0404  -5.5866
+event_categoryHealth and Well-being             -0.8443 0.0540 -15.6250
+event_categoryIndeterminate                     -0.0883 0.0483  -1.8282
+groupBPD                                        -2.1915 0.1058 -20.7144
+                                                         df      p
+(Intercept)                                        284.1850 < .001
+event_categoryLeisure and Recreation            10,630.3427 < .001
+event_categorySocial and Personal Relationships 10,653.0604   .001
+event_categoryWork and Professional Engagements 10,675.4237 < .001
+event_categoryHealth and Well-being             10,685.7285 < .001
+event_categoryIndeterminate                     10,798.5560   .068
+groupBPD                                           266.1557 < .001

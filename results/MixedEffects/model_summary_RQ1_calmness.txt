@@ -1,0 +1,141 @@
+Model Summary for RQ 1  ( calmness ):
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's
+  method [lmerModLmerTest]
+Formula: formula
+   Data: data
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  34676.0   34778.1  -17324.0   34648.0     10827 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.6804 -0.5480  0.1079  0.5553  3.9449 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.7153   0.8458  
+ Residual             1.3256   1.1514  
+Number of obs: 10841, groups:  id, 265
+
+Fixed effects:
+                                                           Estimate Std. Error
+(Intercept)                                               4.941e+00  7.719e-02
+event_categoryLeisure and Recreation                      8.714e-02  4.334e-02
+event_categorySocial and Personal Relationships          -3.733e-02  4.840e-02
+event_categoryWork and Professional Engagements          -3.034e-01  4.741e-02
+event_categoryHealth and Well-being                      -6.177e-01  1.266e-01
+event_categoryIndeterminate                              -5.231e-02  7.228e-02
+groupBPD                                                 -2.008e+00  1.107e-01
+event_categoryLeisure and Recreation:groupBPD             3.130e-02  6.544e-02
+event_categorySocial and Personal Relationships:groupBPD -2.650e-01  6.601e-02
+event_categoryWork and Professional Engagements:groupBPD -1.002e-01  8.825e-02
+event_categoryHealth and Well-being:groupBPD             -1.715e-01  1.402e-01
+event_categoryIndeterminate:groupBPD                     -9.119e-02  9.628e-02
+                                                                 df t value
+(Intercept)                                               2.995e+02  64.014
+event_categoryLeisure and Recreation                      1.062e+04   2.010
+event_categorySocial and Personal Relationships           1.065e+04  -0.771
+event_categoryWork and Professional Engagements           1.067e+04  -6.400
+event_categoryHealth and Well-being                       1.062e+04  -4.879
+event_categoryIndeterminate                               1.073e+04  -0.724
+groupBPD                                                  3.097e+02 -18.134
+event_categoryLeisure and Recreation:groupBPD             1.063e+04   0.478
+event_categorySocial and Personal Relationships:groupBPD  1.065e+04  -4.014
+event_categoryWork and Professional Engagements:groupBPD  1.067e+04  -1.136
+event_categoryHealth and Well-being:groupBPD              1.063e+04  -1.223
+event_categoryIndeterminate:groupBPD                      1.078e+04  -0.947
+                                                         Pr(>|t|)    
+(Intercept)                                               < 2e-16 ***
+event_categoryLeisure and Recreation                       0.0444 *  
+event_categorySocial and Personal Relationships            0.4406    
+event_categoryWork and Professional Engagements          1.62e-10 ***
+event_categoryHealth and Well-being                      1.08e-06 ***
+event_categoryIndeterminate                                0.4693    
+groupBPD                                                  < 2e-16 ***
+event_categoryLeisure and Recreation:groupBPD              0.6325    
+event_categorySocial and Personal Relationships:groupBPD 6.01e-05 ***
+event_categoryWork and Professional Engagements:groupBPD   0.2561    
+event_categoryHealth and Well-being:groupBPD               0.2214    
+event_categoryIndeterminate:groupBPD                       0.3436    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) ev_LaR ev_SaPR ev_WaPE ev_HaW- evnt_I grpBPD e_LaR: e_SaPR:
+evnt_ctgLaR -0.182                                                            
+evnt_ctSaPR -0.167  0.282                                                     
+evnt_ctWaPE -0.173  0.305  0.261                                              
+evnt_ctHaW- -0.063  0.109  0.112   0.106                                      
+evnt_ctgryI -0.120  0.195  0.193   0.172   0.076                              
+groupBPD    -0.697  0.127  0.116   0.121   0.044   0.083                      
+evn_LaR:BPD  0.120 -0.662 -0.187  -0.202  -0.072  -0.129 -0.195               
+ev_SaPR:BPD  0.122 -0.207 -0.733  -0.192  -0.082  -0.142 -0.199  0.320        
+ev_WaPE:BPD  0.093 -0.164 -0.140  -0.537  -0.057  -0.093 -0.151  0.254  0.244 
+ev_HaW-:BPD  0.057 -0.098 -0.101  -0.095  -0.903  -0.068 -0.096  0.148  0.166 
+evnt_cI:BPD  0.090 -0.147 -0.145  -0.129  -0.057  -0.751 -0.153  0.223  0.241 
+            e_WaPE: e_HaW-:
+evnt_ctgLaR                
+evnt_ctSaPR                
+evnt_ctWaPE                
+evnt_ctHaW-                
+evnt_ctgryI                
+groupBPD                   
+evn_LaR:BPD                
+ev_SaPR:BPD                
+ev_WaPE:BPD                
+ev_HaW-:BPD  0.117         
+evnt_cI:BPD  0.170   0.125 
+
+APA Style Table:
+                                                                                                                     Effect
+(Intercept)                                                                                                       Intercept
+event_categoryLeisure and Recreation                                                   Event categoryLeisure and Recreation
+event_categorySocial and Personal Relationships                             Event categorySocial and Personal Relationships
+event_categoryWork and Professional Engagements                             Event categoryWork and Professional Engagements
+event_categoryHealth and Well-being                                                     Event categoryHealth and Well-being
+event_categoryIndeterminate                                                                     Event categoryIndeterminate
+groupBPD                                                                                                           GroupBPD
+event_categoryLeisure and Recreation:groupBPD                       Event categoryLeisure and Recreation $\\times$ GroupBPD
+event_categorySocial and Personal Relationships:groupBPD Event categorySocial and Personal Relationships $\\times$ GroupBPD
+event_categoryWork and Professional Engagements:groupBPD Event categoryWork and Professional Engagements $\\times$ GroupBPD
+event_categoryHealth and Well-being:groupBPD                         Event categoryHealth and Well-being $\\times$ GroupBPD
+event_categoryIndeterminate:groupBPD                                         Event categoryIndeterminate $\\times$ GroupBPD
+                                                               b     SE
+(Intercept)                                               4.9413 0.0772
+event_categoryLeisure and Recreation                      0.0871 0.0433
+event_categorySocial and Personal Relationships          -0.0373 0.0484
+event_categoryWork and Professional Engagements          -0.3034 0.0474
+event_categoryHealth and Well-being                      -0.6177 0.1266
+event_categoryIndeterminate                              -0.0523 0.0723
+groupBPD                                                 -2.0079 0.1107
+event_categoryLeisure and Recreation:groupBPD             0.0313 0.0654
+event_categorySocial and Personal Relationships:groupBPD -0.2650 0.0660
+event_categoryWork and Professional Engagements:groupBPD -0.1002 0.0882
+event_categoryHealth and Well-being:groupBPD             -0.1715 0.1402
+event_categoryIndeterminate:groupBPD                     -0.0912 0.0963
+                                                                t          df
+(Intercept)                                               64.0140    299.5422
+event_categoryLeisure and Recreation                       2.0105 10,615.4064
+event_categorySocial and Personal Relationships           -0.7712 10,646.3639
+event_categoryWork and Professional Engagements           -6.3996 10,667.4437
+event_categoryHealth and Well-being                       -4.8790 10,615.4864
+event_categoryIndeterminate                               -0.7236 10,732.4101
+groupBPD                                                 -18.1341    309.7470
+event_categoryLeisure and Recreation:groupBPD              0.4783 10,631.5499
+event_categorySocial and Personal Relationships:groupBPD  -4.0140 10,649.4700
+event_categoryWork and Professional Engagements:groupBPD  -1.1356 10,672.8090
+event_categoryHealth and Well-being:groupBPD              -1.2228 10,630.9934
+event_categoryIndeterminate:groupBPD                      -0.9471 10,779.1898
+                                                              p
+(Intercept)                                              < .001
+event_categoryLeisure and Recreation                       .044
+event_categorySocial and Personal Relationships            .441
+event_categoryWork and Professional Engagements          < .001
+event_categoryHealth and Well-being                      < .001
+event_categoryIndeterminate                                .469
+groupBPD                                                 < .001
+event_categoryLeisure and Recreation:groupBPD              .632
+event_categorySocial and Personal Relationships:groupBPD < .001
+event_categoryWork and Professional Engagements:groupBPD   .256
+event_categoryHealth and Well-being:groupBPD               .221
+event_categoryIndeterminate:groupBPD                       .344
